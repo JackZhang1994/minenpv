@@ -1,0 +1,46 @@
+{
+  "main_library": {
+    "exported_symbols": [
+      {
+        "data": {
+          "global": [
+            "_kSAMKeychainClassKey",
+            "_kSAMKeychainWhereKey",
+            "_SAMKeychainVersionString",
+            "_kSAMKeychainAccountKey",
+            "_SAMKeychainVersionNumber",
+            "_kSAMKeychainCreatedAtKey",
+            "_kSAMKeychainLabelKey",
+            "_kSAMKeychainLastModifiedKey",
+            "_kSAMKeychainDescriptionKey",
+            "_kSAMKeychainErrorDomain"
+          ],
+          "objc_class": [
+            "SAMKeychain",
+            "SAMKeychainQuery",
+            "PodsDummy_SAMKeychain"
+          ]
+        }
+      }
+    ],
+    "flags": [
+      {
+        "attributes": [
+          "not_app_extension_safe"
+        ]
+      }
+    ],
+    "install_names": [
+      {
+        "name": "@rpath/SAMKeychain.framework/Versions/A/SAMKeychain"
+      }
+    ],
+    "target_info": [
+      {
+        "min_deployment": "11",
+        "target": "arm64-macos"
+      }
+    ]
+  },
+  "tapi_tbd_version": 5
+}

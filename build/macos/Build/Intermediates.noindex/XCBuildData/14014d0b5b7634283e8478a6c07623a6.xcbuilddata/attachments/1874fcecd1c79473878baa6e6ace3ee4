@@ -1,0 +1,11 @@
+framework module flutter_v2ray_desktop {
+  umbrella header "flutter_v2ray_desktop-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module flutter_v2ray_desktop.Swift {
+  header "flutter_v2ray_desktop-Swift.h"
+  requires objc
+}

@@ -1,0 +1,30 @@
+"/Users/zhangjianfu/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter_wkwebview-3.18.5/darwin/webview_flutter_wkwebview/Sources/webview_flutter_wkwebview/HTTPCookieProxyAPIDelegate.swift":
+  swift-dependencies: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieProxyAPIDelegate.swiftdeps"
+  diagnostics: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieProxyAPIDelegate.dia"
+  object: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieProxyAPIDelegate.o"
+  const-values: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieProxyAPIDelegate.swiftconstvalues"
+  dependencies: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieProxyAPIDelegate.d"
+"/Users/zhangjianfu/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter_wkwebview-3.18.5/darwin/webview_flutter_wkwebview/Sources/webview_flutter_wkwebview/HTTPURLResponseProxyAPIDelegate.swift":
+  object: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPURLResponseProxyAPIDelegate.o"
+  const-values: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPURLResponseProxyAPIDelegate.swiftconstvalues"
+  dependencies: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPURLResponseProxyAPIDelegate.d"
+  diagnostics: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPURLResponseProxyAPIDelegate.dia"
+  swift-dependencies: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPURLResponseProxyAPIDelegate.swiftdeps"
+"/Users/zhangjianfu/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter_wkwebview-3.18.5/darwin/webview_flutter_wkwebview/Sources/webview_flutter_wkwebview/FrameInfoProxyAPIDelegate.swift":
+  swift-dependencies: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/FrameInfoProxyAPIDelegate.swiftdeps"
+  const-values: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/FrameInfoProxyAPIDelegate.swiftconstvalues"
+  diagnostics: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/FrameInfoProxyAPIDelegate.dia"
+  object: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/FrameInfoProxyAPIDelegate.o"
+  dependencies: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/FrameInfoProxyAPIDelegate.d"
+"/Users/zhangjianfu/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter_wkwebview-3.18.5/darwin/webview_flutter_wkwebview/Sources/webview_flutter_wkwebview/NavigationActionProxyAPIDelegate.swift":
+  const-values: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/NavigationActionProxyAPIDelegate.swiftconstvalues"
+  dependencies: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/NavigationActionProxyAPIDelegate.d"
+  diagnostics: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/NavigationActionProxyAPIDelegate.dia"
+  object: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/NavigationActionProxyAPIDelegate.o"
+  swift-dependencies: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/NavigationActionProxyAPIDelegate.swiftdeps"
+"/Users/zhangjianfu/.pub-cache/hosted/pub.flutter-io.cn/webview_flutter_wkwebview-3.18.5/darwin/webview_flutter_wkwebview/Sources/webview_flutter_wkwebview/HTTPCookieStoreProxyAPIDelegate.swift":
+  dependencies: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieStoreProxyAPIDelegate.d"
+  swift-dependencies: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieStoreProxyAPIDelegate.swiftdeps"
+  const-values: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieStoreProxyAPIDelegate.swiftconstvalues"
+  object: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieStoreProxyAPIDelegate.o"
+  diagnostics: "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/webview_flutter_wkwebview.build/Objects-normal/arm64/HTTPCookieStoreProxyAPIDelegate.dia"

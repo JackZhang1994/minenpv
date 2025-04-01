@@ -1,0 +1,18 @@
+{
+  "" : {
+    "diagnostics" : "/Users/zhangjianfu/Project/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/OrderedSet.build/Objects-normal/arm64/OrderedSet-master.dia",
+    "emit-module-dependencies" : "/Users/zhangjianfu/Project/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/OrderedSet.build/Objects-normal/arm64/OrderedSet-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/zhangjianfu/Project/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/OrderedSet.build/Objects-normal/arm64/OrderedSet-master-emit-module.dia",
+    "swift-dependencies" : "/Users/zhangjianfu/Project/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/OrderedSet.build/Objects-normal/arm64/OrderedSet-master.swiftdeps"
+  },
+  "/Users/zhangjianfu/Project/vpn/macos/Pods/OrderedSet/Sources/OrderedSet.swift" : {
+    "const-values" : "/Users/zhangjianfu/Project/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/OrderedSet.build/Objects-normal/arm64/OrderedSet.swiftconstvalues",
+    "dependencies" : "/Users/zhangjianfu/Project/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/OrderedSet.build/Objects-normal/arm64/OrderedSet.d",
+    "diagnostics" : "/Users/zhangjianfu/Project/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/OrderedSet.build/Objects-normal/arm64/OrderedSet.dia",
+    "index-unit-output-path" : "/Pods.build/Debug/OrderedSet.build/Objects-normal/arm64/OrderedSet.o",
+    "llvm-bc" : "/Users/zhangjianfu/Project/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/OrderedSet.build/Objects-normal/arm64/OrderedSet.bc",
+    "object" : "/Users/zhangjianfu/Project/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/OrderedSet.build/Objects-normal/arm64/OrderedSet.o",
+    "swift-dependencies" : "/Users/zhangjianfu/Project/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/OrderedSet.build/Objects-normal/arm64/OrderedSet.swiftdeps",
+    "swiftmodule" : "/Users/zhangjianfu/Project/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/OrderedSet.build/Objects-normal/arm64/OrderedSet~partial.swiftmodule"
+  }
+}

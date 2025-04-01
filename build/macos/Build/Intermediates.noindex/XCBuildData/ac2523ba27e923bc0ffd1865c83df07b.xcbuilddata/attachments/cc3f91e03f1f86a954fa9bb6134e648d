@@ -1,0 +1,38 @@
+{
+  "" : {
+    "diagnostics" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/tray_manager-master.dia",
+    "emit-module-dependencies" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/tray_manager-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/tray_manager-master-emit-module.dia",
+    "swift-dependencies" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/tray_manager-master.swiftdeps"
+  },
+  "/Users/zhangjianfu/.pub-cache/hosted/pub.flutter-io.cn/tray_manager-0.3.2/macos/Classes/TrayIcon.swift" : {
+    "const-values" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayIcon.swiftconstvalues",
+    "dependencies" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayIcon.d",
+    "diagnostics" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayIcon.dia",
+    "index-unit-output-path" : "/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayIcon.o",
+    "llvm-bc" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayIcon.bc",
+    "object" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayIcon.o",
+    "swift-dependencies" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayIcon.swiftdeps",
+    "swiftmodule" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayIcon~partial.swiftmodule"
+  },
+  "/Users/zhangjianfu/.pub-cache/hosted/pub.flutter-io.cn/tray_manager-0.3.2/macos/Classes/TrayManagerPlugin.swift" : {
+    "const-values" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayManagerPlugin.swiftconstvalues",
+    "dependencies" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayManagerPlugin.d",
+    "diagnostics" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayManagerPlugin.dia",
+    "index-unit-output-path" : "/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayManagerPlugin.o",
+    "llvm-bc" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayManagerPlugin.bc",
+    "object" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayManagerPlugin.o",
+    "swift-dependencies" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayManagerPlugin.swiftdeps",
+    "swiftmodule" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayManagerPlugin~partial.swiftmodule"
+  },
+  "/Users/zhangjianfu/.pub-cache/hosted/pub.flutter-io.cn/tray_manager-0.3.2/macos/Classes/TrayMenu.swift" : {
+    "const-values" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayMenu.swiftconstvalues",
+    "dependencies" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayMenu.d",
+    "diagnostics" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayMenu.dia",
+    "index-unit-output-path" : "/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayMenu.o",
+    "llvm-bc" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayMenu.bc",
+    "object" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayMenu.o",
+    "swift-dependencies" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayMenu.swiftdeps",
+    "swiftmodule" : "/Users/zhangjianfu/Desktop/vpn/build/macos/Build/Intermediates.noindex/Pods.build/Debug/tray_manager.build/Objects-normal/arm64/TrayMenu~partial.swiftmodule"
+  }
+}

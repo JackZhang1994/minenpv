@@ -1,0 +1,10 @@
+framework module tray_manager {
+  umbrella header "tray_manager-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module tray_manager.__Swift {
+  exclude header "tray_manager-Swift.h"
+}
