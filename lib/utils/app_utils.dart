@@ -4,6 +4,8 @@
 * @Date: 2024-06-10 16:07:08 
 */
 
+import 'dart:io' show Platform;
+
 import 'package:url_launcher/url_launcher.dart';
 
 class AppUtils {
@@ -28,5 +30,9 @@ class AppUtils {
     } catch (_) {
       return false;
     }
+  }
+
+  static bool isMobile() {
+    return Platform.isAndroid || Platform.isIOS || Platform.isFuchsia;
   }
 }
