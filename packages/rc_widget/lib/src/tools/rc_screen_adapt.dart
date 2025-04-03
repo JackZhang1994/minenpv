@@ -4,7 +4,9 @@
 * @Date: 2022-11-28 11:14:43 
 */
 
+import 'dart:io';
 import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class RcScreenAdapt {
@@ -14,7 +16,14 @@ class RcScreenAdapt {
   static bool _isInit = false;
 
   /// 设计图宽度及高度
-  static const double _uiWidth = 1800, _uiHeight = 1200;
+  static const double _desktopAppUiWidth = 1800, _desktopAppUiHeight = 1200;
+  static const double _mobileAppUiWidth = 375, _mobileAppUiHeight = 812;
+
+  static double get _uiWidth =>
+      (Platform.isAndroid || Platform.isIOS || Platform.isFuchsia) ? _mobileAppUiWidth : _desktopAppUiWidth;
+
+  static double get _uiHeight =>
+      (Platform.isAndroid || Platform.isIOS || Platform.isFuchsia) ? _mobileAppUiHeight : _desktopAppUiHeight;
 
   /// 屏幕宽度
   static double screenWidth = 0;
@@ -36,7 +45,7 @@ class RcScreenAdapt {
 
   /// 缩放比例
   static double get _zoomScale {
-    const uiScale = _uiWidth / _uiHeight;
+    double uiScale = _uiWidth / _uiHeight;
     final screenScale = screenWidth / screenHeight;
 
     final a = screenScale / uiScale;

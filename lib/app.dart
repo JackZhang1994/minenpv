@@ -6,21 +6,22 @@
 
 import 'dart:io';
 
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:rc_widget/rc_widget.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get.dart';
+import 'package:rc_widget/rc_widget.dart';
 import 'package:tray_manager/tray_manager.dart';
 import 'package:window_manager/window_manager.dart';
 import 'package:yunyou_desktop/controllers/public/app_config_controller.dart';
+import 'package:yunyou_desktop/utils/app_utils.dart';
 
+import 'configs/index.dart';
+import 'controllers/public/app_node_controller.dart';
+import 'controllers/public/app_user_controller.dart';
 import 'pages/mine/mine_home/controllers/mine_home_controller.dart';
 import 'routes/index.dart';
 import 'themes/index.dart';
-import 'configs/index.dart';
-import 'controllers/public/app_user_controller.dart';
-import 'controllers/public/app_node_controller.dart';
 
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
@@ -33,15 +34,19 @@ class _MyAppState extends State<MyApp> with WindowListener, TrayListener {
   @override
   void initState() {
     super.initState();
-    trayManager.addListener(this);
-    windowManager.addListener(this);
-    _init();
+    if (!AppUtils.isMobile()) {
+      trayManager.addListener(this);
+      windowManager.addListener(this);
+      _init();
+    }
   }
 
   @override
   void dispose() {
-    trayManager.removeListener(this);
-    windowManager.removeListener(this);
+    if (!AppUtils.isMobile()) {
+      trayManager.removeListener(this);
+      windowManager.removeListener(this);
+    }
     super.dispose();
   }
 
@@ -49,9 +54,7 @@ class _MyAppState extends State<MyApp> with WindowListener, TrayListener {
     // 添加此行以覆盖默认关闭处理程序
     await windowManager.setPreventClose(true);
     await trayManager.setIcon(
-      Platform.isWindows
-          ? 'assets/icons/tray-icon.ico'
-          : 'assets/icons/tray-icon.png',
+      Platform.isWindows ? 'assets/icons/tray-icon.ico' : 'assets/icons/tray-icon.png',
     );
     Menu menu = Menu(
       items: [
