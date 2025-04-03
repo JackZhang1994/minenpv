@@ -30,3 +30,7 @@ lib/generated
 /pub_version_records/
 
 devtools_options.yaml
+
+packages/flutter_v2ray_desktop/.dart_tool/
+
+
