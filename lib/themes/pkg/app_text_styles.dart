@@ -6,6 +6,7 @@
 
 part of '../index.dart';
 
+/// PC 字体样式
 extension AppTextStyles on CustomTheme {
   TextStyle get bottomBarText {
     return TextStyle(
@@ -210,5 +211,24 @@ extension AppTextStyles on CustomTheme {
       color: colors.text5,
       fontWeight: FontWeight.bold,
     );
+  }
+}
+
+/// Mobile 字体样式
+extension MobileAppTextStyles on CustomTheme {
+  TextStyle get medium18text1 {
+    return TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500, color: colors.text1);
+  }
+
+  TextStyle get medium16text1 {
+    return TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500, color: colors.text1);
+  }
+
+  TextStyle get medium16text5 {
+    return TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500, color: colors.text5);
+  }
+
+  TextStyle get semibold20text1 {
+    return TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600, color: colors.text1);
   }
 }

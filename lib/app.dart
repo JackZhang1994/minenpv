@@ -7,6 +7,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_adaptive_ui/flutter_adaptive_ui.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
@@ -79,30 +80,36 @@ class _MyAppState extends State<MyApp> with WindowListener, TrayListener {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppThemes.theme,
-      getPages: AppRoutes.routes,
-      initialBinding: InitialBinding(),
-      initialRoute: AppRoutes.initialRoute,
-      defaultTransition: AppRoutes.defaultTransition,
-      transitionDuration: AppRoutes.defaultTransitionDuration,
-      locale: AppConfigs.defaultLocale,
-      supportedLocales: AppConfigs.supportedLocales,
-      localizationsDelegates: const [
-        GlobalWidgetsLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      builder: EasyLoading.init(
-        builder: _buildRoot,
+    return Breakpoint(
+      child: GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        theme: AppThemes.theme,
+        getPages: AppRoutes.routes,
+        initialBinding: InitialBinding(),
+        initialRoute: AppRoutes.initialRoute,
+        defaultTransition: AppRoutes.defaultTransition,
+        transitionDuration: AppRoutes.defaultTransitionDuration,
+        locale: AppConfigs.defaultLocale,
+        supportedLocales: AppConfigs.supportedLocales,
+        localizationsDelegates: const [
+          GlobalWidgetsLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        builder: EasyLoading.init(
+          builder: _buildRoot,
+        ),
       ),
     );
   }
 
   Widget _buildRoot(BuildContext context, Widget? child) {
-    RcScreenAdapt.init(context);
-
+    ScreenUtil.init(
+      context,
+      designSize: AppUtils.isMobile() ? const Size(375, 812) : const Size(1800, 1200),
+      minTextAdapt: true,
+    );
+    // RcScreenAdapt.init(context);
     return MediaQuery(
       data: MediaQuery.of(context).copyWith(
         textScaler: const TextScaler.linear(1),

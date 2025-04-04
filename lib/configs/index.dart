@@ -16,7 +16,7 @@ class AppConfigs {
 
   /* -------- 应用配置  -------- */
 
-  static const String appDisplayName = '迅捷狐';
+  static const String appDisplayName = '光帆';
 
   /// App版本号
   static const String appVersion = '1.0.0';
@@ -82,4 +82,3 @@ enum Env {
     required this.isReport,
   });
 }
-

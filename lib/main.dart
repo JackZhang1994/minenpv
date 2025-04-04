@@ -9,6 +9,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:launch_at_startup/launch_at_startup.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -25,7 +26,9 @@ Future<void> main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
 
   if (!AppUtils.isMobile()) {
-    _initDesktopAppsPlugins();
+    await _initDesktopAppsPlugins();
+  } else {
+    await _initMobileAppsPlugins();
   }
 
   await Future.wait([
@@ -46,7 +49,11 @@ Future<void> main(List<String> args) async {
   runApp(const MyApp());
 }
 
-void _initDesktopAppsPlugins() async {
+Future _initMobileAppsPlugins() async {
+  await ScreenUtil.ensureScreenSize();
+}
+
+Future _initDesktopAppsPlugins() async {
   if (!kIsWeb && defaultTargetPlatform == TargetPlatform.windows) {
     final availableVersion = await WebViewEnvironment.getAvailableVersion();
     if (availableVersion != null) {
