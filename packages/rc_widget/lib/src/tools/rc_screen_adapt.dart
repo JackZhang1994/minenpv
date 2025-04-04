@@ -84,6 +84,12 @@ class RcScreenAdapt {
     assert(_isInit, 'RcScreenAdapt未初始化');
     return fontSize * _scaleHeight * _zoomScale;
   }
+
+  /// 获取适配圆角
+  static double getAdaptRadius(double radius) {
+    assert(_isInit, 'RcScreenAdapt未初始化');
+    return radius * min(_scaleWidth, _scaleHeight);
+  }
 }
 
 extension RcScreenAdaptExtension on num {
@@ -93,6 +99,13 @@ extension RcScreenAdaptExtension on num {
   /// 获取适配高度
   double get h => RcScreenAdapt.getAdaptHeight(toDouble()).toDouble();
 
+  /// 获取适配圆角
+  double get r => RcScreenAdapt.getAdaptRadius(toDouble()).toDouble();
+
   /// 获取适配字体
   double get sp => RcScreenAdapt.getAdaptFontSize(toDouble()).toDouble();
+
+  double get sw => this * RcScreenAdapt.screenWidth;
+
+  double get sh => this * RcScreenAdapt.screenHeight;
 }

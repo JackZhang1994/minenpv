@@ -4,16 +4,15 @@
 * @Date: 2024-06-08 10:15:36 
 */
 
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:rc_widget/rc_widget.dart';
 
-import '../../../controllers/public/app_user_controller.dart';
+import '/controllers/public/app_node_controller.dart';
 import '/themes/index.dart';
 import '/widgets/base/app_asset_image.dart';
-import '/controllers/public/app_node_controller.dart';
-
-import '../controllers/home_controller.dart';
+import '../../../../controllers/public/app_user_controller.dart';
+import '../../controllers/home_controller.dart';
 import 'gift_view.dart';
 
 class SwitchView extends StatelessWidget {
@@ -65,9 +64,7 @@ class SwitchView extends StatelessWidget {
         child: Obx(
           () {
             return AppAssetImage.square(
-              v.isConnect.value
-                  ? 'assets/images/home/bg-2.webp'
-                  : 'assets/images/home/bg-1.webp',
+              v.isConnect.value ? 'assets/images/home/bg-2.webp' : 'assets/images/home/bg-1.webp',
               dimension: double.infinity,
             );
           },
@@ -82,9 +79,7 @@ class SwitchView extends StatelessWidget {
       children: [
         Obx(() {
           return AppAssetImage.square(
-            s.isConnect.value
-                ? 'assets/images/home/linked.webp'
-                : 'assets/images/home/link.webp',
+            s.isConnect.value ? 'assets/images/home/linked.webp' : 'assets/images/home/link.webp',
             dimension: 96.w,
           );
         }),
@@ -162,8 +157,7 @@ Widget _buildDailyGift() {
                   ),
                 ),
                 AppGaps.h16,
-                Container(
-                    child: Text('免费领取会员', style: AppThemes.of().w400Text128))
+                Container(child: Text('免费领取会员', style: AppThemes.of().w400Text128))
               ],
             ),
           ))

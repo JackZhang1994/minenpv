@@ -6,15 +6,15 @@
 
 library app_themes;
 
-import 'package:get/get.dart';
-
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:rc_widget/rc_widget.dart';
+import 'package:yunyou_desktop/utils/app_utils.dart';
 
-part 'pkg/app_gaps.dart';
 part 'pkg/app_colors.dart';
-part 'pkg/app_spacings.dart';
 part 'pkg/app_decorations.dart';
+part 'pkg/app_gaps.dart';
+part 'pkg/app_spacings.dart';
 part 'pkg/app_text_styles.dart';
 
 class AppThemes {
@@ -28,7 +28,7 @@ class AppThemes {
     return ThemeData.light().copyWith(
       scaffoldBackgroundColor: CustomColors.light().scaffoldBackground1,
       extensions: [
-        CustomTheme(CustomColors.light()),
+        CustomTheme(AppUtils.isMobile() ? CustomColors.mobileLight() : CustomColors.light()),
       ],
     );
   }
@@ -36,7 +36,7 @@ class AppThemes {
   static ThemeData get darkTheme {
     return ThemeData.dark().copyWith(
       extensions: [
-        CustomTheme(CustomColors.dark()),
+        CustomTheme(AppUtils.isMobile() ? CustomColors.mobileDark() : CustomColors.dark()),
       ],
     );
   }

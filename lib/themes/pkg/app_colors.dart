@@ -77,6 +77,54 @@ class CustomColors {
     );
   }
 
+  factory CustomColors.mobileLight() {
+    return const CustomColors(
+      spinkit: Colors.white,
+      buttonText: Colors.white,
+      buttonSpinkit: Colors.white,
+      buttonBackground1: Colors.white,
+      buttonBackground2: Colors.white,
+      bottomBarText: Colors.white,
+      bottomBarTextSEL: Colors.white,
+      bottomBarBackground: Colors.white,
+      scaffoldBackground1: Colors.white,
+      text1: Colors.black,
+      text2: Color(0xff333333),
+      text3: Color(0xffE6E6E6),
+      text4: Color(0xff6FEED2),
+      text5: Colors.white,
+      border1: Color(0xff9CF1B3),
+      border2: Color(0xffFFFFFF),
+      border3: Color(0xffD3D3D3),
+      shadow1: Colors.white,
+      background1: Color(0xFFFFFFFF),
+    );
+  }
+
+  factory CustomColors.mobileDark() {
+    return const CustomColors(
+      spinkit: Colors.white,
+      buttonText: Colors.white,
+      buttonSpinkit: Colors.white,
+      buttonBackground1: Colors.white,
+      buttonBackground2: Colors.white,
+      bottomBarText: Colors.white,
+      bottomBarTextSEL: Colors.white,
+      bottomBarBackground: Colors.white,
+      scaffoldBackground1: Colors.white,
+      text1: Colors.black,
+      text2: Colors.black,
+      text3: Colors.black,
+      text4: Colors.black,
+      text5: Colors.black,
+      border1: Colors.white,
+      border2: Colors.white,
+      border3: Colors.white,
+      shadow1: Colors.white,
+      background1: Colors.white,
+    );
+  }
+
   /* ------------ 基础颜色  ------------ */
 
   /// 加载指示器

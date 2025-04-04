@@ -4,8 +4,8 @@
 * @Date: 2024-06-08 09:39:52 
 */
 
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:rc_widget/rc_widget.dart';
 import 'package:yunyou_desktop/controllers/public/app_user_controller.dart';
 
@@ -17,14 +17,16 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
     this.leading,
     this.actions,
     this.title = '',
+    this.isMobile = false,
   });
 
   final String title;
   final Widget? leading;
   final Widget? actions;
+  final bool isMobile;
 
   @override
-  Size get preferredSize => Size.fromHeight(88.h);
+  Size get preferredSize => Size.fromHeight(isMobile ? 44.h : 88.h);
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +56,7 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
     );
 
     return Positioned(
-      left: 12.w,
+      left: isMobile ? 16.w : 12.w,
       child: leading ?? widget,
     );
   }
@@ -62,7 +64,7 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   Widget _buildTitle() {
     return Text(
       title,
-      style: AppThemes.of().w500Text136,
+      style: isMobile ? AppThemes.of().medium18text1 : AppThemes.of().w500Text136,
     );
   }
 

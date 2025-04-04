@@ -53,6 +53,9 @@ dependencies:
   launch_at_startup: ^0.3.1
   flutter_udid: ^4.0.0
   package_info_plus: ^8.0.2
+  flutter_adaptive_ui: ^0.8.0+1
+  skeletonizer: ^1.4.3
+  lottie: ^3.2.0
 
 dev_dependencies:
   flutter_test:
