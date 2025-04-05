@@ -9,7 +9,6 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:launch_at_startup/launch_at_startup.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -32,6 +31,7 @@ Future<void> main(List<String> args) async {
   }
 
   await Future.wait([
+    ScreenUtil.ensureScreenSize(),
     RcOrientation.setLandscape(),
     RcHttp.init(
       options: HttpConfigs.options,
@@ -49,9 +49,7 @@ Future<void> main(List<String> args) async {
   runApp(const MyApp());
 }
 
-Future _initMobileAppsPlugins() async {
-  await ScreenUtil.ensureScreenSize();
-}
+Future _initMobileAppsPlugins() async {}
 
 Future _initDesktopAppsPlugins() async {
   if (!kIsWeb && defaultTargetPlatform == TargetPlatform.windows) {

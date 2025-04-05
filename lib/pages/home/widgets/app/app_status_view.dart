@@ -23,7 +23,7 @@ class AppStatusView extends StatelessWidget {
           child: Visibility(
             visible: s.vipType == 1,
             replacement: _VipStatusWidget(
-              logoPath: 'assets/images/home/vip_logo.webp',
+              logoPath: 'assets/images/home/app_vip_logo.webp',
               logoWidth: 88.w,
               bgPath: 'assets/images/home/vip_bg.webp',
               vipName: '青铜会员',
@@ -34,9 +34,9 @@ class AppStatusView extends StatelessWidget {
               },
             ),
             child: _VipStatusWidget(
-              logoPath: 'assets/images/home/svip_logo.webp',
+              logoPath: 'assets/images/home/app_svip_logo.webp',
               logoWidth: 126.w,
-              bgPath: 'assets/images/home/svip_bg.webp',
+              bgPath: 'assets/images/home/app_svip_bg.webp',
               vipName: '钻石会员',
               daysLeft: s.daysLeft,
               btnGradient: LinearGradient(colors: [Color(0xffDA923F), Color(0xff7B5325)]),
@@ -65,7 +65,7 @@ class _NoVipStatusWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       decoration: BoxDecoration(
         image: const DecorationImage(
-          image: AssetImage('assets/images/home/no_vip.webp'),
+          image: AssetImage('assets/images/home/app_no_vip.webp'),
           fit: BoxFit.cover,
         ),
       ),

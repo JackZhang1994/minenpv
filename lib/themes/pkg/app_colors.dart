@@ -28,6 +28,9 @@ class CustomColors {
     required this.shadow1,
     required this.background1,
     this.primaryColor,
+    this.splashColor,
+    this.highlightColor,
+    this.dividerColor,
   });
 
   factory CustomColors.light() {
@@ -81,7 +84,7 @@ class CustomColors {
   }
 
   factory CustomColors.mobileLight() {
-    return const CustomColors(
+    return CustomColors(
       spinkit: Colors.white,
       buttonText: Colors.white,
       buttonSpinkit: Colors.white,
@@ -102,6 +105,9 @@ class CustomColors {
       shadow1: Colors.white,
       background1: Color(0xFFFFFFFF),
       primaryColor: Color(0xff0095FF),
+      splashColor: Colors.transparent,
+      highlightColor: Color(0x1A0095FF),
+      dividerColor: Colors.black.withOpacity(0.05),
     );
   }
 
@@ -133,6 +139,12 @@ class CustomColors {
   /* ------------ 基础颜色  ------------ */
 
   final Color? primaryColor;
+
+  final Color? splashColor;
+
+  final Color? highlightColor;
+
+  final Color? dividerColor;
 
   /// 加载指示器
   final Color spinkit;

@@ -7,8 +7,8 @@
 import 'package:flutter/material.dart';
 import 'package:rc_widget/rc_widget.dart';
 
-import '../../mine_home/controllers/mine_home_controller.dart';
 import '/themes/index.dart';
+import '../../../mine_home/controllers/mine_home_controller.dart';
 
 class LoginoutView extends StatelessWidget {
   const LoginoutView({super.key});

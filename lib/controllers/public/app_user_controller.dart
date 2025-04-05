@@ -8,9 +8,9 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_udid/flutter_udid.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:rc_widget/rc_widget.dart';
 
 import '/controllers/base/app_getx_controller.dart';
@@ -28,7 +28,9 @@ class AppUserController extends AppGetxController {
 
   final Rx<Data> _user = Data.init().obs;
 
-  bool get isLogin => loginStatus.value;
+  // TODO 暂时置为true
+  // bool get isLogin => loginStatus.value;
+  bool get isLogin => true;
 
   bool get isNotLogin => !isLogin;
 
@@ -42,6 +44,16 @@ class AppUserController extends AppGetxController {
 
   /// 设备数量
   // int get device => user.nodeConnector;
+
+  /// UID
+  String get uid => user.uid?.toString() ?? '';
+
+  /// 邮箱
+  String get email => user.email?.toString() ?? '';
+
+  /// 会员到期时间
+  String get endTimeShow =>
+      isVip ? DateFormat('yyyy-MM-dd HH:mm:ss').format(user.vipEndTime ?? DateTime.now()) : '1970-01-01 00:00:00';
 
   /// 是否会员
   bool get isVip => user.vipEndTime!.isAfter(DateTime.now());

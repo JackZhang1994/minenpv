@@ -220,12 +220,28 @@ extension MobileAppTextStyles on CustomTheme {
     return TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400, color: colors.text1);
   }
 
+  TextStyle get regular14text3 {
+    return TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400, color: colors.text3);
+  }
+
   TextStyle get regular14text4 {
     return TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400, color: colors.text4);
   }
 
+  TextStyle get regular14primary {
+    return TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400, color: colors.primaryColor);
+  }
+
   TextStyle get regular12text1 {
     return TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400, color: colors.text1);
+  }
+
+  TextStyle get regular12text3 {
+    return TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400, color: colors.text3);
+  }
+
+  TextStyle get regular12primary {
+    return TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400, color: colors.primaryColor);
   }
 
   TextStyle get medium18text1 {
@@ -254,5 +270,13 @@ extension MobileAppTextStyles on CustomTheme {
 
   TextStyle get semibold20text1 {
     return TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600, color: colors.text1);
+  }
+
+  TextStyle get semibold14text3 {
+    return TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600, color: colors.text3);
+  }
+
+  TextStyle get semibold12text3 {
+    return TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600, color: colors.text3);
   }
 }
