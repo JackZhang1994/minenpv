@@ -81,6 +81,9 @@ class _MyAppState extends State<MyApp> with WindowListener, TrayListener {
   @override
   Widget build(BuildContext context) {
     return Breakpoint(
+      breakpointData: BreakpointData(
+        minSmallDesktopWidth: 800,
+      ),
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
         theme: AppThemes.theme,

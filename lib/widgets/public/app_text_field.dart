@@ -6,6 +6,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:rc_widget/rc_widget.dart';
+import 'package:yunyou_desktop/utils/app_utils.dart';
 
 import '/themes/index.dart';
 
@@ -31,19 +33,41 @@ class AppTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      obscureText: obscureText,
-      controller: controller,
-      cursorColor: Colors.white,
-      style: AppThemes.of().w400Text128,
-      inputFormatters: inputFormatters,
-      decoration: InputDecoration(
-        isDense: true,
-        hintText: hintText,
-        border: InputBorder.none,
-        contentPadding: contentPadding,
-        hintStyle: hintStyle ?? AppThemes.of().w400Text328,
-      ),
-    );
+    if (AppUtils.isMobile()) {
+      return TextField(
+        obscureText: obscureText,
+        controller: controller,
+        cursorColor: AppThemes.of().colors.primaryColor,
+        style: AppThemes.of().regular14text1,
+        inputFormatters: inputFormatters,
+        decoration: InputDecoration(
+          isDense: true,
+          hintText: hintText,
+          contentPadding: contentPadding,
+          hintStyle: hintStyle ?? AppThemes.of().regular14text4,
+          enabledBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: AppThemes.of().colors.text1, width: 1.h),
+          ),
+          focusedBorder: UnderlineInputBorder(
+            borderSide: BorderSide(color: AppThemes.of().colors.text1, width: 1.h),
+          ),
+        ),
+      );
+    } else {
+      return TextField(
+        obscureText: obscureText,
+        controller: controller,
+        cursorColor: Colors.white,
+        style: AppThemes.of().w400Text128,
+        inputFormatters: inputFormatters,
+        decoration: InputDecoration(
+          isDense: true,
+          hintText: hintText,
+          border: InputBorder.none,
+          contentPadding: contentPadding,
+          hintStyle: hintStyle ?? AppThemes.of().w400Text328,
+        ),
+      );
+    }
   }
 }

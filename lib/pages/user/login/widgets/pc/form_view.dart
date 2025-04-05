@@ -8,10 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rc_widget/rc_widget.dart';
 
-import '../../../../themes/index.dart';
 import '/widgets/public/app_form_card.dart';
-
-import '../controllers/login_controller.dart';
+import '../../../../../themes/index.dart';
+import '../../controllers/login_controller.dart';
 
 class FormView extends StatelessWidget {
   const FormView({super.key});

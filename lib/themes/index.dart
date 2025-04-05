@@ -26,6 +26,7 @@ class AppThemes {
 
   static ThemeData get lightTheme {
     return ThemeData.light().copyWith(
+      primaryColor: CustomColors.light().primaryColor,
       scaffoldBackgroundColor: CustomColors.light().scaffoldBackground1,
       extensions: [
         CustomTheme(AppUtils.isMobile() ? CustomColors.mobileLight() : CustomColors.light()),
@@ -35,6 +36,7 @@ class AppThemes {
 
   static ThemeData get darkTheme {
     return ThemeData.dark().copyWith(
+      primaryColor: CustomColors.dark().primaryColor,
       extensions: [
         CustomTheme(AppUtils.isMobile() ? CustomColors.mobileDark() : CustomColors.dark()),
       ],

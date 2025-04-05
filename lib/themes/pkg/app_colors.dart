@@ -27,6 +27,7 @@ class CustomColors {
     required this.border3,
     required this.shadow1,
     required this.background1,
+    this.primaryColor,
   });
 
   factory CustomColors.light() {
@@ -50,6 +51,7 @@ class CustomColors {
       border3: Color(0xffD3D3D3),
       shadow1: Colors.white,
       background1: Color(0xFFFFFFFF),
+      primaryColor: null,
     );
   }
 
@@ -74,6 +76,7 @@ class CustomColors {
       border3: Colors.white,
       shadow1: Colors.white,
       background1: Colors.white,
+      primaryColor: null,
     );
   }
 
@@ -91,13 +94,14 @@ class CustomColors {
       text1: Colors.black,
       text2: Color(0xff333333),
       text3: Color(0xffE6E6E6),
-      text4: Color(0xff6FEED2),
+      text4: Color(0xffCCCCCC),
       text5: Colors.white,
       border1: Color(0xff9CF1B3),
       border2: Color(0xffFFFFFF),
       border3: Color(0xffD3D3D3),
       shadow1: Colors.white,
       background1: Color(0xFFFFFFFF),
+      primaryColor: Color(0xff0095FF),
     );
   }
 
@@ -122,10 +126,13 @@ class CustomColors {
       border3: Colors.white,
       shadow1: Colors.white,
       background1: Colors.white,
+      primaryColor: null,
     );
   }
 
   /* ------------ 基础颜色  ------------ */
+
+  final Color? primaryColor;
 
   /// 加载指示器
   final Color spinkit;
