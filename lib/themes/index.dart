@@ -26,8 +26,19 @@ class AppThemes {
 
   static ThemeData get lightTheme {
     return ThemeData.light().copyWith(
-      primaryColor: CustomColors.light().primaryColor,
-      scaffoldBackgroundColor: CustomColors.light().scaffoldBackground1,
+      primaryColor: AppUtils.isMobile() ? CustomColors.mobileLight().primaryColor : CustomColors.light().primaryColor,
+      scaffoldBackgroundColor: AppUtils.isMobile()
+          ? CustomColors.mobileLight().scaffoldBackground1
+          : CustomColors.light().scaffoldBackground1,
+      splashColor: AppUtils.isMobile() ? CustomColors.mobileLight().splashColor : CustomColors.light().splashColor,
+      highlightColor:
+          AppUtils.isMobile() ? CustomColors.mobileLight().highlightColor : CustomColors.light().highlightColor,
+      dividerColor: AppUtils.isMobile() ? CustomColors.mobileLight().dividerColor : CustomColors.light().dividerColor,
+      dividerTheme: DividerThemeData(
+        color: AppUtils.isMobile() ? CustomColors.mobileLight().dividerColor : CustomColors.light().dividerColor,
+        thickness: 1.h,
+        space: 0,
+      ),
       extensions: [
         CustomTheme(AppUtils.isMobile() ? CustomColors.mobileLight() : CustomColors.light()),
       ],

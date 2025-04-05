@@ -84,34 +84,35 @@ class _MyAppState extends State<MyApp> with WindowListener, TrayListener {
       breakpointData: BreakpointData(
         minSmallDesktopWidth: 800,
       ),
-      child: GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: AppThemes.theme,
-        getPages: AppRoutes.routes,
-        initialBinding: InitialBinding(),
-        initialRoute: AppRoutes.initialRoute,
-        defaultTransition: AppRoutes.defaultTransition,
-        transitionDuration: AppRoutes.defaultTransitionDuration,
-        locale: AppConfigs.defaultLocale,
-        supportedLocales: AppConfigs.supportedLocales,
-        localizationsDelegates: const [
-          GlobalWidgetsLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        builder: EasyLoading.init(
-          builder: _buildRoot,
-        ),
+      child: ScreenUtilInit(
+        designSize: AppUtils.isMobile() ? const Size(375, 812) : const Size(1800, 1200),
+        minTextAdapt: true,
+        builder: (context, child) {
+          return GetMaterialApp(
+            debugShowCheckedModeBanner: false,
+            theme: AppThemes.theme,
+            getPages: AppRoutes.routes,
+            initialBinding: InitialBinding(),
+            initialRoute: AppRoutes.initialRoute,
+            defaultTransition: AppRoutes.defaultTransition,
+            transitionDuration: AppRoutes.defaultTransitionDuration,
+            locale: AppConfigs.defaultLocale,
+            supportedLocales: AppConfigs.supportedLocales,
+            localizationsDelegates: const [
+              GlobalWidgetsLocalizations.delegate,
+              GlobalMaterialLocalizations.delegate,
+              GlobalCupertinoLocalizations.delegate,
+            ],
+            builder: EasyLoading.init(
+              builder: _buildRoot,
+            ),
+          );
+        },
       ),
     );
   }
 
   Widget _buildRoot(BuildContext context, Widget? child) {
-    ScreenUtil.init(
-      context,
-      designSize: AppUtils.isMobile() ? const Size(375, 812) : const Size(1800, 1200),
-      minTextAdapt: true,
-    );
     // RcScreenAdapt.init(context);
     return MediaQuery(
       data: MediaQuery.of(context).copyWith(

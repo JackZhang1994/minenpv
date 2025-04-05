@@ -5,14 +5,15 @@
 */
 
 import 'package:get/get.dart';
-import '/pages/mine/setting/index.dart';
-import '/pages/mine/node/index.dart';
-import '/pages/mine/invite/index.dart';
-import '/pages/mine/support/index.dart';
-import '/pages/mine/personal/index.dart';
-import '/pages/mine/bulletin/index.dart';
-import '/pages/mine/recommend/index.dart';
 
+import '/pages/mine/app_setting/index.dart';
+import '/pages/mine/bulletin/index.dart';
+import '/pages/mine/invite/index.dart';
+import '/pages/mine/node/index.dart';
+import '/pages/mine/personal/index.dart';
+import '/pages/mine/recommend/index.dart';
+import '/pages/mine/setting/index.dart';
+import '/pages/mine/support/index.dart';
 import '../middlewares/login_middleware.dart';
 
 final List<GetPage> mineRoutes = [
@@ -54,12 +55,19 @@ final List<GetPage> mineRoutes = [
     page: () => const SupportPage(),
   ),
   GetPage(
-      name: '/setting',
-      binding: SettingPageBinding(),
-      page: () => const SettingPage()),
+    name: '/setting',
+    binding: SettingPageBinding(),
+    page: () => const SettingPage(),
+  ),
   GetPage(
     name: '/recommend',
     page: () => const RecommendPage(),
     binding: RecommendPageBinding(),
+  ),
+  GetPage(
+    name: '/app_setting',
+    page: () => const AppSettingPage(),
+    binding: AppSettingPageBinding(),
+    transition: Transition.leftToRight,
   ),
 ];

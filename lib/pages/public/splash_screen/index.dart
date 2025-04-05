@@ -25,8 +25,8 @@ class SplashScreenPage extends StatelessWidget {
       layoutDelegate: AdaptiveLayoutDelegateWithMinimallScreenType(
         handset: (BuildContext context, Screen screen) {
           return Image.asset(
-            'assets/images/public/splash_bg.png',
-            fit: BoxFit.fill,
+            'assets/images/public/app_splash_bg.png',
+            fit: BoxFit.cover,
             width: 1.sw,
             height: 1.sh,
           );
