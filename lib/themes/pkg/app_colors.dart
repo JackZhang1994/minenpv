@@ -93,7 +93,7 @@ class CustomColors {
       scaffoldBackground1: Colors.white,
       text1: Colors.black,
       text2: Color(0xff333333),
-      text3: Color(0xffE6E6E6),
+      text3: Color(0xff999999),
       text4: Color(0xffCCCCCC),
       text5: Colors.white,
       border1: Color(0xff9CF1B3),

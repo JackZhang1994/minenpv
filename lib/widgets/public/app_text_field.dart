@@ -11,7 +11,7 @@ import 'package:yunyou_desktop/utils/app_utils.dart';
 
 import '/themes/index.dart';
 
-class AppTextField extends StatelessWidget {
+class AppTextField extends StatefulWidget {
   const AppTextField({
     super.key,
     this.hintText,
@@ -21,6 +21,7 @@ class AppTextField extends StatelessWidget {
     this.contentPadding,
     this.inputFormatters,
     this.obscureText = false,
+    this.keyboardType,
   });
 
   final String? hintText;
@@ -30,44 +31,76 @@ class AppTextField extends StatelessWidget {
   final TextEditingController? controller;
   final EdgeInsetsGeometry? contentPadding;
   final List<TextInputFormatter>? inputFormatters;
+  final TextInputType? keyboardType;
+
+  @override
+  State<AppTextField> createState() => _AppTextFieldState();
+}
+
+class _AppTextFieldState extends State<AppTextField> {
+  late bool _obscureText;
+
+  @override
+  void initState() {
+    super.initState();
+    _obscureText = widget.obscureText;
+  }
 
   @override
   Widget build(BuildContext context) {
     if (AppUtils.isMobile()) {
       return TextField(
-        obscureText: obscureText,
-        controller: controller,
+        obscureText: _obscureText,
+        controller: widget.controller,
         cursorColor: AppThemes.of().colors.primaryColor,
         style: AppThemes.of().regular14text1,
-        inputFormatters: inputFormatters,
+        inputFormatters: widget.inputFormatters,
+        keyboardType: widget.keyboardType,
         decoration: InputDecoration(
           isDense: true,
-          hintText: hintText,
-          contentPadding: contentPadding,
-          hintStyle: hintStyle ?? AppThemes.of().regular14text4,
+          hintText: widget.hintText,
+          contentPadding: widget.contentPadding,
+          hintStyle: widget.hintStyle ?? AppThemes.of().regular14text4,
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: AppThemes.of().colors.text1, width: 1.h),
           ),
           focusedBorder: UnderlineInputBorder(
             borderSide: BorderSide(color: AppThemes.of().colors.text1, width: 1.h),
           ),
+          suffixIcon: widget.keyboardType == TextInputType.visiblePassword ? _buildEyesBtn() : null,
         ),
       );
     } else {
       return TextField(
-        obscureText: obscureText,
-        controller: controller,
+        obscureText: widget.obscureText,
+        controller: widget.controller,
         cursorColor: Colors.white,
         style: AppThemes.of().w400Text128,
-        inputFormatters: inputFormatters,
+        inputFormatters: widget.inputFormatters,
         decoration: InputDecoration(
           isDense: true,
-          hintText: hintText,
+          hintText: widget.hintText,
           border: InputBorder.none,
-          contentPadding: contentPadding,
-          hintStyle: hintStyle ?? AppThemes.of().w400Text328,
+          contentPadding: widget.contentPadding,
+          hintStyle: widget.hintStyle ?? AppThemes.of().w400Text328,
         ),
       );
     }
+  }
+
+  Widget _buildEyesBtn() {
+    return GestureDetector(
+      behavior: HitTestBehavior.translucent,
+      onTap: () {
+        setState(() {
+          _obscureText = !_obscureText;
+        });
+      },
+      child: Icon(
+        _obscureText ? Icons.visibility_off : Icons.visibility,
+        size: 16.w,
+        color: AppThemes.of().colors.text3,
+      ),
+    );
   }
 }
