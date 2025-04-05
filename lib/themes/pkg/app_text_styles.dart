@@ -216,6 +216,18 @@ extension AppTextStyles on CustomTheme {
 
 /// Mobile 字体样式
 extension MobileAppTextStyles on CustomTheme {
+  TextStyle get regular14text1 {
+    return TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400, color: colors.text1);
+  }
+
+  TextStyle get regular14text4 {
+    return TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400, color: colors.text4);
+  }
+
+  TextStyle get regular12text1 {
+    return TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w400, color: colors.text1);
+  }
+
   TextStyle get medium18text1 {
     return TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w500, color: colors.text1);
   }
@@ -226,6 +238,18 @@ extension MobileAppTextStyles on CustomTheme {
 
   TextStyle get medium16text5 {
     return TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500, color: colors.text5);
+  }
+
+  TextStyle get medium14text1 {
+    return TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500, color: colors.text1);
+  }
+
+  TextStyle get medium14primary {
+    return TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500, color: colors.primaryColor);
+  }
+
+  TextStyle get semibold32text1 {
+    return TextStyle(fontSize: 32.sp, fontWeight: FontWeight.w600, color: colors.text1);
   }
 
   TextStyle get semibold20text1 {

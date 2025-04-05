@@ -45,18 +45,30 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   Widget _buildLeading() {
-    final widget = RcImageButton(
-      name: 'assets/images/public/back.webp',
-      dimension: 88.w,
-      imageDimension: 48.w,
-      onTap: () {
-        AppUserController.to.getUser();
-        Get.back();
-      },
-    );
-
+    final widget;
+    if (isMobile) {
+      widget = RcIconButton(
+        icon: Icons.arrow_back,
+        dimension: 24.w,
+        color: AppThemes.of().colors.text2,
+        onTap: () {
+          AppUserController.to.getUser();
+          Get.back();
+        },
+      );
+    } else {
+      widget = RcImageButton(
+        name: 'assets/images/public/back.webp',
+        dimension: 88.w,
+        imageDimension: 48.w,
+        onTap: () {
+          AppUserController.to.getUser();
+          Get.back();
+        },
+      );
+    }
     return Positioned(
-      left: isMobile ? 16.w : 12.w,
+      left: 12.w,
       child: leading ?? widget,
     );
   }
