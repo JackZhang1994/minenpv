@@ -69,6 +69,8 @@ class _AppTextFieldState extends State<AppTextField> {
             borderSide: BorderSide(color: AppThemes.of().colors.text1, width: 1.h),
           ),
           suffixIcon: widget.keyboardType == TextInputType.visiblePassword ? _buildEyesBtn() : null,
+          suffixIconConstraints:
+              widget.keyboardType == TextInputType.visiblePassword ? BoxConstraints.tight(Size(16.w, 16.w)) : null,
         ),
       );
     } else {
@@ -91,15 +93,16 @@ class _AppTextFieldState extends State<AppTextField> {
 
   Widget _buildEyesBtn() {
     return GestureDetector(
-        behavior: HitTestBehavior.translucent,
-        onTap: () {
-          setState(() {
-            _obscureText = !_obscureText;
-          });
-        },
-        child: AppAssetImage.square(
-          _obscureText ? 'assets/images/public/app_eye_opened.png' : 'assets/images/public/app_eye_closed.png',
-          dimension: 16.w,
-        ));
+      behavior: HitTestBehavior.translucent,
+      onTap: () {
+        setState(() {
+          _obscureText = !_obscureText;
+        });
+      },
+      child: AppAssetImage.square(
+        _obscureText ? 'assets/images/public/app_eye_opened.png' : 'assets/images/public/app_eye_closed.png',
+        dimension: 16.w,
+      ),
+    );
   }
 }

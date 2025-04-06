@@ -102,7 +102,7 @@ class AppPersonalInfoView extends StatelessWidget {
                     Flexible(
                       child: GestureDetector(
                         onTap: () {
-                          // TODO 修改密码
+                          Get.toNamed('/modify_pwd');
                         },
                         child: Text(
                           '修改密码',
