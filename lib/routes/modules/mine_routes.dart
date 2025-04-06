@@ -5,8 +5,9 @@
 */
 
 import 'package:get/get.dart';
+import 'package:yunyou_desktop/pages/mine/account_setting/index.dart';
+import 'package:yunyou_desktop/utils/app_utils.dart';
 
-import '/pages/mine/app_setting/index.dart';
 import '/pages/mine/bulletin/index.dart';
 import '/pages/mine/invite/index.dart';
 import '/pages/mine/node/index.dart';
@@ -58,6 +59,7 @@ final List<GetPage> mineRoutes = [
     name: '/setting',
     binding: SettingPageBinding(),
     page: () => const SettingPage(),
+    transition: AppUtils.isMobile() ? Transition.leftToRight : null,
   ),
   GetPage(
     name: '/recommend',
@@ -65,9 +67,8 @@ final List<GetPage> mineRoutes = [
     binding: RecommendPageBinding(),
   ),
   GetPage(
-    name: '/app_setting',
-    page: () => const AppSettingPage(),
-    binding: AppSettingPageBinding(),
-    transition: Transition.leftToRight,
+    name: '/account_setting',
+    page: () => const AccountSettingPage(),
+    binding: AccountSettingPageBinding(),
   ),
 ];
