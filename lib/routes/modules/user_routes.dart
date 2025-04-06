@@ -5,6 +5,7 @@
 */
 
 import 'package:get/get.dart';
+import 'package:yunyou_desktop/pages/user/modify_pwd/index.dart';
 
 import '/pages/user/login/index.dart';
 import '/pages/user/register/index.dart';
@@ -19,5 +20,10 @@ final List<GetPage> userRoutes = [
     name: '/register',
     binding: RegisterPageBinding(),
     page: () => const RegisterPage(),
+  ),
+  GetPage(
+    name: '/modify_pwd',
+    binding: ModifyPwdPageBinding(),
+    page: () => const ModifyPwdPage(),
   ),
 ];
