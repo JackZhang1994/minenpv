@@ -47,10 +47,10 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   Widget _buildLeading() {
     final widget;
     if (isMobile) {
-      widget = RcIconButton(
-        icon: Icons.arrow_back,
+      widget = RcImageButton(
+        name: 'assets/images/public/app_arrow_left_android.png',
         dimension: 24.w,
-        color: AppThemes.of().colors.text2,
+        imageDimension: 24.w,
         onTap: () {
           AppUserController.to.getUser();
           Get.back();

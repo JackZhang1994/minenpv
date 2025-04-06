@@ -23,9 +23,9 @@ class AppStatusView extends StatelessWidget {
           child: Visibility(
             visible: s.vipType == 1,
             replacement: _VipStatusWidget(
-              logoPath: 'assets/images/home/app_vip_logo.webp',
+              logoPath: 'assets/images/home/app_vip_logo.png',
               logoWidth: 88.w,
-              bgPath: 'assets/images/home/vip_bg.webp',
+              bgPath: 'assets/images/home/vip_bg.png',
               vipName: '青铜会员',
               daysLeft: s.daysLeft,
               btnGradient: LinearGradient(colors: [Color(0xff6175FF), Color(0xff3E4AA1)]),
@@ -34,9 +34,9 @@ class AppStatusView extends StatelessWidget {
               },
             ),
             child: _VipStatusWidget(
-              logoPath: 'assets/images/home/app_svip_logo.webp',
+              logoPath: 'assets/images/home/app_svip_logo.png',
               logoWidth: 126.w,
-              bgPath: 'assets/images/home/app_svip_bg.webp',
+              bgPath: 'assets/images/home/app_svip_bg.png',
               vipName: '钻石会员',
               daysLeft: s.daysLeft,
               btnGradient: LinearGradient(colors: [Color(0xffDA923F), Color(0xff7B5325)]),
@@ -65,7 +65,7 @@ class _NoVipStatusWidget extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       decoration: BoxDecoration(
         image: const DecorationImage(
-          image: AssetImage('assets/images/home/app_no_vip.webp'),
+          image: AssetImage('assets/images/home/app_no_vip.png'),
           fit: BoxFit.cover,
         ),
       ),
@@ -73,13 +73,14 @@ class _NoVipStatusWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            '您还未购买套餐',
-            style: AppThemes.of().medium16text1.copyWith(color: Color(0xff0095FF)),
+            '',
+            // '您还未购买套餐',
+            style: AppThemes.of().medium16text1.copyWith(color: AppThemes.of().colors.primaryColor),
           ),
           AppGaps.h16,
           _ButtonView(
             btnText: '去购买',
-            btnGradient: LinearGradient(colors: [Color(0xff00CCFF), Color(0xff0095FF)]),
+            btnGradient: LinearGradient(colors: [Color(0xff00CCFF), AppThemes.of().colors.primaryColor!]),
             onTap: onTap,
           ),
         ],
@@ -193,10 +194,9 @@ class _ButtonView extends StatelessWidget {
               style: AppThemes.of().medium16text5,
             ),
             AppGaps.w8,
-            Icon(
-              Icons.arrow_forward,
-              size: 16.sp,
-              color: Colors.white,
+            AppAssetImage.square(
+              'assets/images/public/app_arrow_right_white_android.png',
+              dimension: 20.w,
             ),
           ],
         ),

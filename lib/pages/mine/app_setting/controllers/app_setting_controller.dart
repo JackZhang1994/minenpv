@@ -8,27 +8,27 @@ class AppSettingController extends AppGetxController {
 
   late List<MenuEntity> menuList = [
     MenuEntity(
-      imgPath: 'assets/images/mine/giving.webp',
+      imgPath: 'assets/images/mine/app_setting_menu1.png',
       title: '变更国家与地区',
       onTap: () {},
     ),
     MenuEntity(
-      imgPath: 'assets/images/mine/giving.webp',
+      imgPath: 'assets/images/mine/app_setting_menu2.png',
       title: '消息中心',
       onTap: () {},
     ),
     MenuEntity(
-      imgPath: 'assets/images/mine/giving.webp',
+      imgPath: 'assets/images/mine/app_setting_menu3.png',
       title: '软件防丢失',
       onTap: () {},
     ),
     MenuEntity(
-      imgPath: 'assets/images/mine/giving.webp',
+      imgPath: 'assets/images/mine/app_setting_menu4.png',
       title: '在线客服',
       onTap: () {},
     ),
     MenuEntity(
-      imgPath: 'assets/images/mine/giving.webp',
+      imgPath: 'assets/images/mine/app_setting_menu5.png',
       title: '反馈问题',
       onTap: () {},
     ),

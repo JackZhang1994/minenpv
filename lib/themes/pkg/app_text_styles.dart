@@ -216,6 +216,10 @@ extension AppTextStyles on CustomTheme {
 
 /// Mobile 字体样式
 extension MobileAppTextStyles on CustomTheme {
+  TextStyle get regular18text1 {
+    return TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w400, color: colors.text1);
+  }
+
   TextStyle get regular14text1 {
     return TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400, color: colors.text1);
   }

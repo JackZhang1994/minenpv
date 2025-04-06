@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:rc_widget/rc_widget.dart';
 import 'package:yunyou_desktop/utils/app_utils.dart';
+import 'package:yunyou_desktop/widgets/base/app_asset_image.dart';
 
 import '/themes/index.dart';
 
@@ -90,17 +91,15 @@ class _AppTextFieldState extends State<AppTextField> {
 
   Widget _buildEyesBtn() {
     return GestureDetector(
-      behavior: HitTestBehavior.translucent,
-      onTap: () {
-        setState(() {
-          _obscureText = !_obscureText;
-        });
-      },
-      child: Icon(
-        _obscureText ? Icons.visibility_off : Icons.visibility,
-        size: 16.w,
-        color: AppThemes.of().colors.text3,
-      ),
-    );
+        behavior: HitTestBehavior.translucent,
+        onTap: () {
+          setState(() {
+            _obscureText = !_obscureText;
+          });
+        },
+        child: AppAssetImage.square(
+          _obscureText ? 'assets/images/public/app_eye_opened.png' : 'assets/images/public/app_eye_closed.png',
+          dimension: 16.w,
+        ));
   }
 }

@@ -84,10 +84,11 @@ class AppPersonalInfoView extends StatelessWidget {
                                 WidgetSpan(child: AppGaps.w4),
                                 WidgetSpan(
                                   alignment: PlaceholderAlignment.middle,
-                                  child: Icon(
-                                    v.pwdVisible.isTrue ? Icons.visibility : Icons.visibility_off,
-                                    size: 16.sp,
-                                    color: AppThemes.of().colors.text3,
+                                  child: AppAssetImage.square(
+                                    v.pwdVisible.isTrue
+                                        ? 'assets/images/public/app_eye_opened.png'
+                                        : 'assets/images/public/app_eye_closed.png',
+                                    dimension: 16.w,
                                   ),
                                 ),
                               ],
