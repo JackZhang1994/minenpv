@@ -35,6 +35,7 @@ class AppPersonalInfoView extends StatelessWidget {
         child: Row(
           children: [
             Stack(
+              clipBehavior: Clip.none,
               children: [
                 Obx(
                   () => AppImage(
@@ -47,9 +48,9 @@ class AppPersonalInfoView extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                  left: -1.5.w,
-                  right: -1.5.w,
-                  bottom: -9.w,
+                  left: -1.w,
+                  right: -1.w,
+                  bottom: -5.h,
                   child: Obx(
                     () => AppAssetImage(
                       s.isVip
@@ -57,8 +58,8 @@ class AppPersonalInfoView extends StatelessWidget {
                               ? 'assets/images/mine/app_svip.webp'
                               : 'assets/images/mine/app_vip.webp'
                           : 'assets/images/mine/app_no_vip.webp',
-                      width: 73.w,
-                      height: 27.w,
+                      width: 70.w,
+                      height: 23.h,
                     ),
                   ),
                 ),
@@ -85,7 +86,7 @@ class AppPersonalInfoView extends StatelessWidget {
                         TextSpan(text: 'ID:'),
                         WidgetSpan(child: AppGaps.w8),
                         TextSpan(text: s.deviceId),
-                        WidgetSpan(child: AppGaps.w14),
+                        WidgetSpan(child: AppGaps.w12),
                         WidgetSpan(
                           alignment: PlaceholderAlignment.middle,
                           child: GestureDetector(
@@ -94,10 +95,9 @@ class AppPersonalInfoView extends StatelessWidget {
                               final result = await RcTools.copyText(s.uid);
                               RcToast(result ? '复制成功' : '复制失败');
                             },
-                            child: Icon(
-                              Icons.copy,
-                              size: 16.sp,
-                              color: AppThemes.of().colors.text3,
+                            child: AppAssetImage.square(
+                              'assets/images/public/app_copy.png',
+                              dimension: 16.w,
                             ),
                           ),
                         ),
@@ -121,14 +121,9 @@ class AppPersonalInfoView extends StatelessWidget {
                 ],
               ),
             ),
-            // AppAssetImage.square(
-            //   'assets/images/public/app_arrow_right.webp',
-            //   dimension: 24.w,
-            // ),
-            Icon(
-              Icons.arrow_forward_ios,
-              size: 22.sp,
-              color: AppThemes.of().colors.text3,
+            AppAssetImage.square(
+              'assets/images/public/app_arrow_right_grey.png',
+              dimension: 24.w,
             ),
           ],
         ),

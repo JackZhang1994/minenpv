@@ -34,6 +34,7 @@ class AppAssetImage extends StatelessWidget {
       name,
       width: width,
       height: height,
+      fit: BoxFit.cover,
     );
 
     if (padding != null) {

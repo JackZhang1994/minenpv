@@ -64,10 +64,7 @@ class _CardView extends StatelessWidget {
         child: Row(
           children: [
             AppGaps.w24,
-            AppAssetImage.square(
-              imgPath,
-              dimension: 34.w,
-            ),
+            AppAssetImage.square(imgPath, dimension: 34.w),
             AppGaps.w12,
             Expanded(
               child: Column(

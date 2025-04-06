@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_adaptive_ui/flutter_adaptive_ui.dart';
 import 'package:get/get.dart';
 import 'package:rc_widget/rc_widget.dart';
+import 'package:yunyou_desktop/pages/mine/personal/widgets/app/app_device_management_view.dart';
+import 'package:yunyou_desktop/widgets/base/app_asset_image.dart';
 
 import '/themes/index.dart';
 import '/widgets/public/app_scaffold.dart';
@@ -35,16 +37,16 @@ class PersonalPage extends StatelessWidget {
               isMobile: true,
               actions: RcInkWell(
                 onTap: () {},
-                child: Icon(
-                  Icons.settings_outlined,
-                  size: 24.sp,
-                  color: AppThemes.of().colors.text2,
+                child: AppAssetImage.square(
+                  'assets/images/mine/app_setting.png',
+                  dimension: 24.w,
                 ),
               ),
             ),
             body: Column(
               children: [
                 AppUserInfoView(),
+                AppDeviceManagementView(),
               ],
             ),
           );

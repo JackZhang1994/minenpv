@@ -36,7 +36,11 @@ class AppMenuView extends StatelessWidget {
                     style: AppThemes.of().medium16text1,
                     maxLines: 1,
                   ),
-                )
+                ),
+                AppAssetImage.square(
+                  'assets/images/public/app_arrow_right_grey.png',
+                  dimension: 20.w,
+                ),
               ],
             ),
           ),

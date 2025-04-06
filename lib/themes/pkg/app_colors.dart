@@ -27,10 +27,10 @@ class CustomColors {
     required this.border3,
     required this.shadow1,
     required this.background1,
-    this.primaryColor,
-    this.splashColor,
-    this.highlightColor,
-    this.dividerColor,
+    required this.primaryColor,
+    required this.splashColor,
+    required this.highlightColor,
+    required this.dividerColor,
   });
 
   factory CustomColors.light() {
@@ -54,7 +54,10 @@ class CustomColors {
       border3: Color(0xffD3D3D3),
       shadow1: Colors.white,
       background1: Color(0xFFFFFFFF),
-      primaryColor: null,
+      primaryColor: Colors.white,
+      splashColor: Colors.white,
+      highlightColor: Colors.white,
+      dividerColor: Colors.white,
     );
   }
 
@@ -79,7 +82,10 @@ class CustomColors {
       border3: Colors.white,
       shadow1: Colors.white,
       background1: Colors.white,
-      primaryColor: null,
+      primaryColor: Colors.white,
+      splashColor: Colors.white,
+      highlightColor: Colors.white,
+      dividerColor: Colors.white,
     );
   }
 
@@ -132,19 +138,22 @@ class CustomColors {
       border3: Colors.white,
       shadow1: Colors.white,
       background1: Colors.white,
-      primaryColor: null,
+      primaryColor: Colors.white,
+      splashColor: Colors.white,
+      highlightColor: Colors.white,
+      dividerColor: Colors.white,
     );
   }
 
   /* ------------ 基础颜色  ------------ */
 
-  final Color? primaryColor;
+  final Color primaryColor;
 
-  final Color? splashColor;
+  final Color splashColor;
 
-  final Color? highlightColor;
+  final Color highlightColor;
 
-  final Color? dividerColor;
+  final Color dividerColor;
 
   /// 加载指示器
   final Color spinkit;
