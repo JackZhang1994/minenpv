@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rc_widget/rc_widget.dart';
-import 'package:yunyou_desktop/pages/mine/app_setting/controllers/app_setting_controller.dart';
+import 'package:yunyou_desktop/pages/mine/setting/controllers/setting_controller.dart';
 import 'package:yunyou_desktop/themes/index.dart';
 import 'package:yunyou_desktop/widgets/base/app_asset_image.dart';
 
@@ -9,7 +9,7 @@ class AppMenuView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    AppSettingController s = AppSettingController.to;
+    SettingController s = SettingController.to;
     return ListView.separated(
       padding: EdgeInsets.symmetric(vertical: 16.h),
       physics: NeverScrollableScrollPhysics(),

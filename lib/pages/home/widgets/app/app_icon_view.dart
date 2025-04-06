@@ -10,7 +10,7 @@ class AppMenuIcon extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.translucent,
-      onTap: () => Get.toNamed('/app_setting'),
+      onTap: () => Get.toNamed('/setting'),
       child: SizedBox(
         width: 32.w,
         height: 32.w,

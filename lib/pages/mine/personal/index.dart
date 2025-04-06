@@ -36,7 +36,9 @@ class PersonalPage extends StatelessWidget {
               title: '我的账户',
               isMobile: true,
               actions: RcInkWell(
-                onTap: () {},
+                onTap: () {
+                  Get.toNamed('/account_setting');
+                },
                 child: AppAssetImage.square(
                   'assets/images/mine/app_setting.png',
                   dimension: 24.w,

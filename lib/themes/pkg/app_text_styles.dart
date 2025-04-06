@@ -260,8 +260,16 @@ extension MobileAppTextStyles on CustomTheme {
     return TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500, color: colors.text5);
   }
 
+  TextStyle get medium16primary {
+    return TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w500, color: colors.primaryColor);
+  }
+
   TextStyle get medium14text1 {
     return TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500, color: colors.text1);
+  }
+
+  TextStyle get medium14text3 {
+    return TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w500, color: colors.text3);
   }
 
   TextStyle get medium14primary {
