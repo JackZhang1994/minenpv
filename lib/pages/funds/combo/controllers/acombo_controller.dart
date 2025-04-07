@@ -4,18 +4,17 @@
 * @Date: 2024-06-10 22:17:59 
 */
 
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:rc_widget/rc_widget.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:get/get.dart';
+import 'package:rc_widget/rc_widget.dart';
 
-import '/models/message_model.dart';
 import '/controllers/base/app_getx_controller.dart';
-import '/pages/funds/pay_code/models/pay_model.dart';
 import '/controllers/public/app_user_controller.dart';
-
-import '../widgets/pay_view.dart';
+import '/models/message_model.dart';
+import '/pages/funds/pay_code/models/pay_model.dart';
 import '../models/combo_model.dart';
+import '../widgets/pc/pay_view.dart';
 
 class ComboController extends AppGetxController {
   static ComboController get to => Get.find<ComboController>();
@@ -33,6 +32,13 @@ class ComboController extends AppGetxController {
     }
   }
 
+  final Map<int, String> durationMap = {
+    7: '1周',
+    30: '1个月',
+    90: '3个月',
+    365: '12个月',
+  };
+
   @override
   void onInit() {
     super.onInit();
@@ -49,8 +55,7 @@ class ComboController extends AppGetxController {
   // 获取套餐
   Future<void> getCombo() async {
     EasyLoading.show(status: '加载中');
-    getVipCombo();
-    getSvipCombo();
+    await Future.wait([getVipCombo(), getSvipCombo()]);
     EasyLoading.dismiss();
   }
 
@@ -199,5 +204,33 @@ class ComboController extends AppGetxController {
     }
 
     EasyLoading.dismiss(animation: false);
+  }
+
+  /// 将套餐天数转换为套餐时长
+  String convertDaysToDuration(int days) {
+    if (days < 7) {
+      return '$days天';
+    }
+    for (final key in durationMap.keys.toList()..sort()) {
+      if (days <= key) {
+        return durationMap[key]!;
+      }
+    }
+    int nums = days ~/ 30;
+    return '$nums个月';
+  }
+
+  /// 计算折扣比例
+  String calcDiscountValue(double price, double oldPrice, int days) {
+    if (price == 0 || oldPrice == 0) {
+      return '';
+    }
+    final int discount = ((1 - price / oldPrice) * 100).roundToDouble().toInt();
+    return '-$discount%';
+  }
+
+  /// 计算每日单价
+  String calcDailyPrice(double price, int days) {
+    return (price / days).toStringAsFixed(2);
   }
 }

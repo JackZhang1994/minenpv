@@ -28,9 +28,7 @@ class AppUserController extends AppGetxController {
 
   final Rx<Data> _user = Data.init().obs;
 
-  // TODO 暂时置为true
-  // bool get isLogin => loginStatus.value;
-  bool get isLogin => true;
+  bool get isLogin => loginStatus.value;
 
   bool get isNotLogin => !isLogin;
 

@@ -27,4 +27,5 @@ class AppGaps {
   static final Widget h12 = SizedBox(height: 12.h);
   static final Widget h8 = SizedBox(height: 8.h);
   static final Widget h6 = SizedBox(height: 6.h);
+  static final Widget h4 = SizedBox(height: 4.h);
 }

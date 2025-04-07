@@ -4,14 +4,13 @@
 * @Date: 2024-06-09 10:13:09 
 */
 
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:rc_widget/rc_widget.dart';
 
 import '/themes/index.dart';
-
-import '../models/combo_model.dart';
-import '../controllers/acombo_controller.dart';
+import '../../controllers/acombo_controller.dart';
+import '../../models/combo_model.dart';
 
 class ComboView extends StatelessWidget {
   const ComboView({super.key});

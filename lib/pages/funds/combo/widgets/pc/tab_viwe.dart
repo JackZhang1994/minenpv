@@ -8,8 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:rc_widget/rc_widget.dart';
 
 import '/themes/index.dart';
-
-import '../controllers/acombo_controller.dart';
+import '../../controllers/acombo_controller.dart';
 
 class TabView extends StatelessWidget {
   const TabView({super.key});

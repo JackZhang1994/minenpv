@@ -38,7 +38,7 @@ class AppPersonalInfoView extends StatelessWidget {
                 child: Obx(
                   () => AppAssetImage(
                     s.isVip
-                        ? s.vipType == 1
+                        ? s.vipType == 2
                             ? 'assets/images/mine/app_svip.webp'
                             : 'assets/images/mine/app_vip.webp'
                         : 'assets/images/mine/app_no_vip.webp',

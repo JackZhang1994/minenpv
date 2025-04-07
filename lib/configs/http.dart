@@ -5,6 +5,7 @@
 */
 
 import 'dart:isolate';
+
 import 'package:rc_widget/rc_widget.dart';
 
 import '/configs/index.dart';
@@ -48,7 +49,8 @@ class HttpConfigs {
       final Map<String, String> data = await receivePort.first;
 
       final String superId = data[RcStorageKey.superId] ?? '-1';
-      final String token = data[RcStorageKey.token] ?? '';
+      // final String token = data[RcStorageKey.token] ?? '';
+      final String token = 'Bearer a836fada-c162-4b19-b1a6-68136dd2a578';
 
       options.headers.addAll({
         'Authorization': "Bearer $token",
