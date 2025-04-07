@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:rc_widget/rc_widget.dart';
-import 'package:yunyou_desktop/pages/user/login/controllers/login_controller.dart';
 import 'package:yunyou_desktop/themes/index.dart';
 import 'package:yunyou_desktop/widgets/public/app_text_field.dart';
+
+import '../../controllers/register_controller.dart';
 
 class AppFormView extends StatelessWidget {
   const AppFormView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final s = LoginController.to;
+    final s = RegisterController.to;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [

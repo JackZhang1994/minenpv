@@ -4,14 +4,14 @@
 * @Date: 2024-06-09 14:15:28 
 */
 
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:rc_widget/rc_widget.dart';
 
+import '/controllers/base/app_getx_controller.dart';
+import '/models/message_model.dart';
 import '../../../../controllers/public/app_node_controller.dart';
 import '../../../../controllers/public/app_user_controller.dart';
-import '/models/message_model.dart';
-import '/controllers/base/app_getx_controller.dart';
 
 class RegisterController extends AppGetxController {
   static RegisterController get to => Get.find<RegisterController>();
@@ -21,8 +21,27 @@ class RegisterController extends AppGetxController {
   final TextEditingController password = TextEditingController();
   final TextEditingController passwordVerify = TextEditingController();
 
+  RxBool btnEnabled = false.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+
+    debugPrint('RegisterController onInit');
+
+    phone.addListener(_judgeBtnStatus);
+    password.addListener(_judgeBtnStatus);
+  }
+
+  void _judgeBtnStatus() {
+    btnEnabled.value = phone.text.isNotEmpty && password.text.isNotEmpty;
+  }
+
   @override
   void onClose() {
+    phone.removeListener(_judgeBtnStatus);
+    password.removeListener(_judgeBtnStatus);
+    phone.dispose();
     verifycode.dispose();
     password.dispose();
     passwordVerify.dispose();

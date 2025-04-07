@@ -58,6 +58,7 @@ class AppButton extends StatelessWidget {
   Widget _buildText() {
     if (AppUtils.isMobile()) {
       return RcInkWell(
+        highlightColor: Colors.black12,
         onTap: onTap,
         borderRadius: BorderRadius.circular(8.r),
         child: Row(
@@ -129,5 +130,32 @@ class AppButton extends StatelessWidget {
         ],
       );
     }
+  }
+}
+
+class AppDisabledButton extends StatelessWidget {
+  const AppDisabledButton({super.key, required this.text});
+
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 42.h,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8.r),
+        color: Color(0xffC5D3DD),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            text,
+            style: AppThemes.of().medium16text5,
+          ),
+        ],
+      ),
+    );
   }
 }

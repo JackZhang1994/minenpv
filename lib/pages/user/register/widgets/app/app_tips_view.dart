@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:rc_widget/rc_widget.dart';
 
 import '/themes/index.dart';
+import '../../../../../configs/index.dart';
 
 class AppTipsView extends StatelessWidget {
   const AppTipsView({super.key});
@@ -28,7 +29,7 @@ class AppTipsView extends StatelessWidget {
                 children: [
                   TextSpan(text: '注册即表示同意', style: AppThemes.of().medium14text1),
                   WidgetSpan(child: AppGaps.w4),
-                  TextSpan(text: '快连平台服务协议', style: AppThemes.of().medium14primary)
+                  TextSpan(text: '${AppConfigs.appDisplayName}平台服务协议', style: AppThemes.of().medium14primary)
                 ],
               ),
             ),

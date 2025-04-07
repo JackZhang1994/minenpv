@@ -20,9 +20,8 @@ class AppMenuView extends StatelessWidget {
           onTap: entity.onTap,
           child: Container(
             width: 1.sw,
-            height: 56.h,
             color: Colors.transparent,
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
             child: Row(
               children: [
                 AppAssetImage.square(

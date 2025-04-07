@@ -5,14 +5,14 @@
 */
 
 import 'package:flutter/foundation.dart';
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:rc_widget/rc_widget.dart';
 import 'package:yunyou_desktop/controllers/public/app_node_controller.dart';
 
-import '/models/message_model.dart';
 import '/controllers/base/app_getx_controller.dart';
 import '/controllers/public/app_user_controller.dart';
+import '/models/message_model.dart';
 
 class LoginController extends AppGetxController {
   static LoginController get to => Get.find<LoginController>();
@@ -21,8 +21,14 @@ class LoginController extends AppGetxController {
   final TextEditingController password = TextEditingController();
   final TextEditingController verifycode = TextEditingController();
   RxBool isShowPassword = true.obs;
+
+  RxBool btnEnabled = false.obs;
+
   @override
   void onClose() {
+    phone.removeListener(_judgeBtnStatus);
+    password.removeListener(_judgeBtnStatus);
+    phone.dispose();
     password.dispose();
     verifycode.dispose();
     super.onClose();
@@ -32,6 +38,13 @@ class LoginController extends AppGetxController {
   void onInit() {
     super.onInit();
     debugPrint('LoginController onInit');
+
+    phone.addListener(_judgeBtnStatus);
+    password.addListener(_judgeBtnStatus);
+  }
+
+  void _judgeBtnStatus() {
+    btnEnabled.value = phone.text.isNotEmpty && password.text.isNotEmpty;
   }
 
   /// 表单验证
@@ -71,10 +84,7 @@ class LoginController extends AppGetxController {
       'deviceId': AppUserController.to.deviceId,
       'partnerId': 1,
       'email': phone.text,
-      if (isShowPassword.value)
-        'password': password.text
-      else
-        'code': verifycode.text,
+      if (isShowPassword.value) 'password': password.text else 'code': verifycode.text,
     };
 
     final result = await RcHttp.post<MessageModel>(

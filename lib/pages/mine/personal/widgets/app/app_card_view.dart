@@ -22,7 +22,9 @@ class AppCardView extends StatelessWidget {
                     : '青铜会员'
                 : '未开通',
             imgPath: 'assets/images/mine/app_vip_level.webp',
-            onTap: () {},
+            onTap: () {
+              Get.toNamed('/combo');
+            },
           ),
         ),
         Container(
@@ -35,7 +37,9 @@ class AppCardView extends StatelessWidget {
             label: '到期时间',
             value: '${s.daysLeft} 天',
             imgPath: 'assets/images/mine/app_days_left.webp',
-            onTap: () {},
+            onTap: () {
+              Get.toNamed('/combo');
+            },
           ),
         ),
       ],
@@ -59,41 +63,44 @@ class _CardView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: SizedBox(
-        height: 74.h,
-        child: Row(
-          children: [
-            AppGaps.w24,
-            AppAssetImage.square(imgPath, dimension: 34.w),
-            AppGaps.w12,
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    label,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: AppThemes.of().regular12text3,
-                  ),
-                  RichText(
-                    text: TextSpan(text: value, style: AppThemes.of().regular14primary, children: [
-                      WidgetSpan(
-                        alignment: PlaceholderAlignment.middle,
-                        child: AppAssetImage.square(
-                          'assets/images/public/app_arrow_right_primary.webp',
-                          dimension: 20.w,
+      child: RcInkWell(
+        onTap: onTap,
+        child: SizedBox(
+          height: 74.h,
+          child: Row(
+            children: [
+              AppGaps.w24,
+              AppAssetImage.square(imgPath, dimension: 34.w),
+              AppGaps.w12,
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      label,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: AppThemes.of().regular12text3,
+                    ),
+                    RichText(
+                      text: TextSpan(text: value, style: AppThemes.of().regular14primary, children: [
+                        WidgetSpan(
+                          alignment: PlaceholderAlignment.middle,
+                          child: AppAssetImage.square(
+                            'assets/images/public/app_arrow_right_primary.webp',
+                            dimension: 20.w,
+                          ),
                         ),
-                      ),
-                    ]),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
+                      ]),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

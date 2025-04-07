@@ -1,24 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:yunyou_desktop/pages/user/login/controllers/login_controller.dart';
 import 'package:yunyou_desktop/themes/index.dart';
 import 'package:yunyou_desktop/widgets/public/app_button.dart';
+
+import '../../controllers/register_controller.dart';
 
 class AppButtonView extends StatelessWidget {
   const AppButtonView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final s = LoginController.to;
+    final s = RegisterController.to;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Obx(
-          () => AppButton(
-            text: '注册',
-            loadingText: '正在注册',
-            disabled: s.isNotClick,
-            onTap: s.submit,
+          () => Visibility(
+            visible: s.btnEnabled.isTrue,
+            replacement: AppDisabledButton(text: '注册'),
+            child: AppButton(
+              text: '注册',
+              loadingText: '正在注册',
+              disabled: s.isNotClick,
+              onTap: s.submit,
+            ),
           ),
         ),
         AppGaps.h32,

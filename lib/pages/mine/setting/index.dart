@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_adaptive_ui/flutter_adaptive_ui.dart';
 import 'package:get/get.dart';
 import 'package:rc_widget/rc_widget.dart';
+import 'package:yunyou_desktop/pages/home/widgets/app/app_status_view.dart';
 
 import '../../../themes/index.dart';
 import '../../../widgets/public/app_scaffold.dart';
@@ -55,6 +56,8 @@ class _SettingPageState extends State<SettingPage> {
                     children: [
                       AppPersonalInfoView(),
                       AppMenuView(),
+                      const Spacer(),
+                      AppStatusView(),
                     ],
                   ),
                 ],

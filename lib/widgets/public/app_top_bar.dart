@@ -18,12 +18,14 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
     this.actions,
     this.title = '',
     this.isMobile = false,
+    this.backgroundColor = Colors.white,
   });
 
   final String title;
   final Widget? leading;
   final Widget? actions;
   final bool isMobile;
+  final Color backgroundColor;
 
   @override
   Size get preferredSize => Size.fromHeight(isMobile ? 44.h : 88.h);
@@ -43,7 +45,7 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
             child: actions ?? SizedBox.shrink(),
           )
         ],
-        backgroundColor: Colors.white,
+        backgroundColor: backgroundColor,
         titleTextStyle: AppThemes.of().medium18text1,
         automaticallyImplyLeading: true,
         leading: _buildLeading(),
