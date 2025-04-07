@@ -17,7 +17,9 @@ class SettingController extends AppGetxController {
     MenuEntity(
       imgPath: 'assets/images/mine/app_setting_menu1.png',
       title: '变更国家与地区',
-      onTap: () {},
+      onTap: () {
+        Get.toNamed('/node');
+      },
     ),
     MenuEntity(
       imgPath: 'assets/images/mine/app_setting_menu2.png',

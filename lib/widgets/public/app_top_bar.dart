@@ -30,6 +30,26 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (isMobile) {
+      return AppBar(
+        title: _buildTitle(),
+        centerTitle: true,
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        titleSpacing: 0,
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 16.w),
+            child: actions ?? SizedBox.shrink(),
+          )
+        ],
+        backgroundColor: Colors.white,
+        titleTextStyle: AppThemes.of().medium18text1,
+        automaticallyImplyLeading: true,
+        leading: _buildLeading(),
+        toolbarHeight: 44.h,
+      );
+    }
     return SafeArea(
       child: SizedBox.expand(
         child: Stack(
@@ -45,32 +65,32 @@ class AppTopBar extends StatelessWidget implements PreferredSizeWidget {
   }
 
   Widget _buildLeading() {
-    final widget;
     if (isMobile) {
-      widget = RcImageButton(
-        name: 'assets/images/public/app_arrow_left_android.png',
-        dimension: 24.w,
-        imageDimension: 24.w,
-        onTap: () {
-          AppUserController.to.getUser();
-          Get.back();
-        },
-      );
+      return leading ??
+          RcImageButton(
+            name: 'assets/images/public/app_arrow_left_android.png',
+            dimension: 24.w,
+            imageDimension: 24.w,
+            onTap: () {
+              AppUserController.to.getUser();
+              Get.back();
+            },
+          );
     } else {
-      widget = RcImageButton(
-        name: 'assets/images/public/back.webp',
-        dimension: 88.w,
-        imageDimension: 48.w,
-        onTap: () {
-          AppUserController.to.getUser();
-          Get.back();
-        },
+      return Positioned(
+        left: 12.w,
+        child: leading ??
+            RcImageButton(
+              name: 'assets/images/public/back.webp',
+              dimension: 88.w,
+              imageDimension: 48.w,
+              onTap: () {
+                AppUserController.to.getUser();
+                Get.back();
+              },
+            ),
       );
     }
-    return Positioned(
-      left: 12.w,
-      child: leading ?? widget,
-    );
   }
 
   Widget _buildTitle() {
