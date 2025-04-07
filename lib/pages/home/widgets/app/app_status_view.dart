@@ -11,9 +11,9 @@ class AppStatusView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final s = AppUserController.to;
-    return Center(
-      child: Obx(() {
-        return Visibility(
+    return SafeArea(
+      child: Obx(
+        () => Visibility(
           visible: s.isVip,
           replacement: _NoVipStatusWidget(
             onTap: () {
@@ -45,8 +45,8 @@ class AppStatusView extends StatelessWidget {
               },
             ),
           ),
-        );
-      }),
+        ),
+      ),
     );
   }
 }
@@ -60,7 +60,7 @@ class _NoVipStatusWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 343.w,
-      height: 129.h,
+      height: 129.w,
       margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       decoration: BoxDecoration(
@@ -73,8 +73,7 @@ class _NoVipStatusWidget extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            '',
-            // '您还未购买套餐',
+            '您还未购买套餐',
             style: AppThemes.of().medium16text1.copyWith(color: AppThemes.of().colors.primaryColor),
           ),
           AppGaps.h16,
@@ -118,7 +117,7 @@ class _VipStatusWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 343.w,
-      height: 129.h,
+      height: 129.w,
       margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       decoration: BoxDecoration(
@@ -183,6 +182,7 @@ class _ButtonView extends StatelessWidget {
         gradient: btnGradient,
       ),
       child: RcInkWell(
+        highlightColor: Colors.black12,
         onTap: onTap,
         borderRadius: BorderRadius.circular(8.r),
         child: Row(

@@ -41,7 +41,11 @@ class LoginPage extends StatelessWidget {
             ),
             child: Scaffold(
               backgroundColor: Colors.transparent,
-              appBar: AppTopBar(title: '', isMobile: true),
+              appBar: AppTopBar(
+                title: '',
+                backgroundColor: Colors.transparent,
+                isMobile: true,
+              ),
               body: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 16.w),
                 child: Column(
@@ -52,7 +56,7 @@ class LoginPage extends StatelessWidget {
                     AppGaps.h38,
                     AppFormView(),
                     AppGaps.h46,
-                    AppButtonView(),
+                    Flexible(child: AppButtonView()),
                   ],
                 ),
               ),

@@ -49,8 +49,7 @@ class HttpConfigs {
       final Map<String, String> data = await receivePort.first;
 
       final String superId = data[RcStorageKey.superId] ?? '-1';
-      // final String token = data[RcStorageKey.token] ?? '';
-      final String token = 'Bearer a836fada-c162-4b19-b1a6-68136dd2a578';
+      final String token = data[RcStorageKey.token] ?? '';
 
       options.headers.addAll({
         'Authorization': "Bearer $token",

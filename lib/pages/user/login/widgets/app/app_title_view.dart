@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yunyou_desktop/configs/index.dart';
 import 'package:yunyou_desktop/themes/index.dart';
 
 class AppTitleView extends StatelessWidget {
@@ -11,7 +12,7 @@ class AppTitleView extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          '登录光帆',
+          '登录${AppConfigs.appDisplayName}',
           style: AppThemes.of().semibold32text1,
         ),
         AppGaps.h6,
