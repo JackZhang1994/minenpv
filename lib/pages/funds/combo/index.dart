@@ -89,6 +89,34 @@ class ComboPage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Obx(
+                    () => Visibility(
+                      visible: s.combo1.isNotEmpty || s.combo2.isNotEmpty,
+                      child: Padding(
+                        padding: EdgeInsets.only(top: 90.h, bottom: 12.h + ScreenUtil().bottomBarHeight),
+                        child: GestureDetector(
+                          onTap: () {
+                            RcToast('在线客服');
+                          },
+                          child: RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: '有任何问题请直接联系',
+                                  style: AppThemes.of().semibold12text1,
+                                ),
+                                WidgetSpan(child: AppGaps.w6),
+                                TextSpan(
+                                  text: '在线客服',
+                                  style: AppThemes.of().semibold12primary,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
