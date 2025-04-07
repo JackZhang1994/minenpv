@@ -17,7 +17,7 @@ class AppCardView extends StatelessWidget {
           () => _CardView(
             label: '会员等级',
             value: s.isVip
-                ? s.vipType == 1
+                ? s.vipType == 2
                     ? '钻石会员'
                     : '青铜会员'
                 : '未开通',

@@ -21,7 +21,7 @@ class AppStatusView extends StatelessWidget {
             },
           ),
           child: Visibility(
-            visible: s.vipType == 1,
+            visible: s.vipType == 2,
             replacement: _VipStatusWidget(
               logoPath: 'assets/images/home/app_vip_logo.png',
               logoWidth: 88.w,

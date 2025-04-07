@@ -284,11 +284,19 @@ extension MobileAppTextStyles on CustomTheme {
     return TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600, color: colors.text1);
   }
 
+  TextStyle get semibold16text1 {
+    return TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600, color: colors.text1);
+  }
+
   TextStyle get semibold14text3 {
     return TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w600, color: colors.text3);
   }
 
   TextStyle get semibold12text3 {
     return TextStyle(fontSize: 12.sp, fontWeight: FontWeight.w600, color: colors.text3);
+  }
+
+  TextStyle get semibold10text1 {
+    return TextStyle(fontSize: 10.sp, fontWeight: FontWeight.w600, color: colors.text1);
   }
 }
