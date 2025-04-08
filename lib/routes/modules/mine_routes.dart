@@ -7,6 +7,7 @@
 import 'package:get/get.dart';
 import 'package:yunyou_desktop/pages/mine/account_setting/index.dart';
 import 'package:yunyou_desktop/pages/mine/message/index.dart';
+import 'package:yunyou_desktop/pages/mine/message_detail/index.dart';
 import 'package:yunyou_desktop/utils/app_utils.dart';
 
 import '/pages/mine/bulletin/index.dart';
@@ -76,5 +77,9 @@ final List<GetPage> mineRoutes = [
     name: '/message',
     page: () => const MessagePage(),
     binding: MessagePageBinding(),
+  ),
+  GetPage(
+    name: '/message_detail',
+    page: () => const MessageDetailPage(),
   ),
 ];
