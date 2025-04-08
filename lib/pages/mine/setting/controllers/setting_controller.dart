@@ -31,7 +31,9 @@ class SettingController extends AppGetxController {
     MenuEntity(
       imgPath: 'assets/images/mine/app_setting_menu3.png',
       title: '软件防丢失',
-      onTap: () {},
+      onTap: () {
+        Get.toNamed('/qrcode');
+      },
     ),
     MenuEntity(
       imgPath: 'assets/images/mine/app_setting_menu4.png',

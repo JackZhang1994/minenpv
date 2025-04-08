@@ -60,6 +60,10 @@ dependencies:
   intl: ^0.19.0
   auto_size_text: ^3.0.0
   easy_refresh: ^3.4.0
+  pretty_qr_code: ^3.3.0
+  permission_handler: ^11.4.0
+  device_info_plus: ^11.3.0
+  image_gallery_saver_plus: ^4.0.1
 
 dev_dependencies:
   flutter_test:
@@ -100,6 +104,7 @@ flutter:
     - assets/images/flags/
     - assets/images/public/
     - assets/images/funds/
+    - assets/images/channel/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

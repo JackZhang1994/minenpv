@@ -20,6 +20,7 @@ import 'package:yunyou_desktop/utils/app_utils.dart';
 
 import '/configs/http.dart';
 import 'app.dart';
+import 'pages/mine/qrcode/screenshoot/device_utils.dart';
 
 Future<void> main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -49,7 +50,9 @@ Future<void> main(List<String> args) async {
   runApp(const MyApp());
 }
 
-Future _initMobileAppsPlugins() async {}
+Future _initMobileAppsPlugins() async {
+  await Device.initDeviceInfo();
+}
 
 Future _initDesktopAppsPlugins() async {
   if (!kIsWeb && defaultTargetPlatform == TargetPlatform.windows) {
