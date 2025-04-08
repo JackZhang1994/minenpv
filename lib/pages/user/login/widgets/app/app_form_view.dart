@@ -14,13 +14,13 @@ class AppFormView extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         AppTextField(
-          hintText: '请输入邮箱',
+          hintText: '请输入账号',
           controller: s.phone,
           contentPadding: EdgeInsets.symmetric(vertical: 12.h),
         ),
         AppGaps.h16,
         AppTextField(
-          hintText: '请输入密码（8-20位字母或数字）',
+          hintText: '请输入密码',
           controller: s.password,
           obscureText: true,
           inputFormatters: RcInputFormatters.alphanumeric,

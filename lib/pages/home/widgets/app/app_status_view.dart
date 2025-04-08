@@ -12,37 +12,40 @@ class AppStatusView extends StatelessWidget {
   Widget build(BuildContext context) {
     final s = AppUserController.to;
     return SafeArea(
-      child: Obx(
-        () => Visibility(
-          visible: s.isVip,
-          replacement: _NoVipStatusWidget(
-            onTap: () {
-              Get.toNamed('/combo');
-            },
-          ),
-          child: Visibility(
-            visible: s.vipType == 2,
-            replacement: _VipStatusWidget(
-              logoPath: 'assets/images/home/app_vip_logo.png',
-              logoWidth: 88.w,
-              bgPath: 'assets/images/home/vip_bg.png',
-              vipName: '青铜会员',
-              daysLeft: s.daysLeft,
-              btnGradient: LinearGradient(colors: [Color(0xff6175FF), Color(0xff3E4AA1)]),
+      child: Container(
+        margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+        child: Obx(
+          () => Visibility(
+            visible: s.isVip,
+            replacement: _NoVipStatusWidget(
               onTap: () {
                 Get.toNamed('/combo');
               },
             ),
-            child: _VipStatusWidget(
-              logoPath: 'assets/images/home/app_svip_logo.png',
-              logoWidth: 126.w,
-              bgPath: 'assets/images/home/app_svip_bg.png',
-              vipName: '钻石会员',
-              daysLeft: s.daysLeft,
-              btnGradient: LinearGradient(colors: [Color(0xffDA923F), Color(0xff7B5325)]),
-              onTap: () {
-                Get.toNamed('/combo');
-              },
+            child: Visibility(
+              visible: s.vipType == 2,
+              replacement: _VipStatusWidget(
+                logoPath: 'assets/images/home/app_vip_logo.png',
+                logoWidth: 88.w,
+                bgPath: 'assets/images/home/vip_bg.png',
+                vipName: '青铜会员',
+                daysLeft: s.daysLeft,
+                btnGradient: LinearGradient(colors: [Color(0xff6175FF), Color(0xff3E4AA1)]),
+                onTap: () {
+                  Get.toNamed('/combo');
+                },
+              ),
+              child: _VipStatusWidget(
+                logoPath: 'assets/images/home/app_svip_logo.png',
+                logoWidth: 126.w,
+                bgPath: 'assets/images/home/app_svip_bg.png',
+                vipName: '钻石会员',
+                daysLeft: s.daysLeft,
+                btnGradient: LinearGradient(colors: [Color(0xffDA923F), Color(0xff7B5325)]),
+                onTap: () {
+                  Get.toNamed('/combo');
+                },
+              ),
             ),
           ),
         ),
@@ -61,13 +64,20 @@ class _NoVipStatusWidget extends StatelessWidget {
     return Container(
       width: 343.w,
       height: 129.w,
-      margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       decoration: BoxDecoration(
         image: const DecorationImage(
-          image: AssetImage('assets/images/home/app_no_vip.png'),
+          image: AssetImage('assets/images/home/app_no_vip_bg.png'),
           fit: BoxFit.cover,
         ),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset.zero,
+            blurRadius: 20.r,
+            spreadRadius: 0,
+            color: Color(0xff003C70).withOpacity(0.1),
+          ),
+        ],
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -118,13 +128,20 @@ class _VipStatusWidget extends StatelessWidget {
     return Container(
       width: 343.w,
       height: 129.w,
-      margin: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage(bgPath),
           fit: BoxFit.cover,
         ),
+        boxShadow: [
+          BoxShadow(
+            offset: Offset.zero,
+            blurRadius: 20.r,
+            spreadRadius: 0,
+            color: Color(0xff003C70).withOpacity(0.1),
+          ),
+        ],
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

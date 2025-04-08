@@ -15,7 +15,7 @@ class AppFormView extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         AppTextField(
-          hintText: '请输入邮箱',
+          hintText: '请输入账号',
           controller: s.phone,
           contentPadding: EdgeInsets.symmetric(vertical: 12.h),
         ),

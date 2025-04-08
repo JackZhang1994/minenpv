@@ -100,7 +100,7 @@ class _AppTextFieldState extends State<AppTextField> {
         });
       },
       child: AppAssetImage.square(
-        _obscureText ? 'assets/images/public/app_eye_opened.png' : 'assets/images/public/app_eye_closed.png',
+        _obscureText ? 'assets/images/public/app_eye_closed.png' : 'assets/images/public/app_eye_opened.png',
         dimension: 16.w,
       ),
     );

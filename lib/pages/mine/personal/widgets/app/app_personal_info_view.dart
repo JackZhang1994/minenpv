@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rc_widget/rc_widget.dart';
-import 'package:yunyou_desktop/configs/index.dart';
 import 'package:yunyou_desktop/controllers/public/app_user_controller.dart';
 import 'package:yunyou_desktop/pages/mine/personal/controllers/personal_controller.dart';
+import 'package:yunyou_desktop/pages/mine/setting/widgets/app/app_avatar.dart';
 import 'package:yunyou_desktop/themes/index.dart';
 import 'package:yunyou_desktop/widgets/base/app_asset_image.dart';
-import 'package:yunyou_desktop/widgets/public/app_image.dart';
 
 class AppPersonalInfoView extends StatelessWidget {
   const AppPersonalInfoView({super.key});
@@ -21,16 +20,7 @@ class AppPersonalInfoView extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Obx(
-                () => AppImage(
-                  url: AppConfigs.buildImageUrl(s.user.email.toString()),
-                  width: 68.w,
-                  height: 68.w,
-                  borderRadius: 34.w,
-                  placeholder: AppAssetImage.square('assets/images/mine/app_default_avatar.webp', dimension: 68.w),
-                  errorWidget: AppAssetImage.square('assets/images/mine/app_default_avatar.webp', dimension: 68.w),
-                ),
-              ),
+              AppAvatar(size: 68.w),
               Positioned(
                 left: -1.5.w,
                 right: -1.5.w,

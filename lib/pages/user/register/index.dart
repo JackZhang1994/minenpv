@@ -32,35 +32,41 @@ class RegisterPage extends StatelessWidget {
       },
       layoutDelegate: AdaptiveLayoutDelegateWithMinimallScreenType(
         handset: (BuildContext context, Screen screen) {
-          return DecoratedBox(
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Color(0xff0095FF).withOpacity(0.1), Color(0xff0095FF).withOpacity(0)],
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-              ),
-            ),
-            child: Scaffold(
-              backgroundColor: Colors.transparent,
-              appBar: AppTopBar(
-                title: '',
-                backgroundColor: Colors.transparent,
-                isMobile: true,
-              ),
-              body: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    AppGaps.h24,
-                    AppTitleView(),
-                    AppGaps.h38,
-                    AppFormView(),
-                    AppGaps.h46,
-                    AppButtonView(),
-                    const Spacer(),
-                    AppTipsView(),
+          return ColoredBox(
+            color: Colors.white,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: [
+                    AppThemes.of().colors.primaryColor.withOpacity(0.1),
+                    AppThemes.of().colors.primaryColor.withOpacity(0),
                   ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+              ),
+              child: Scaffold(
+                backgroundColor: Colors.transparent,
+                appBar: AppTopBar(
+                  title: '',
+                  backgroundColor: Colors.transparent,
+                  isMobile: true,
+                ),
+                body: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      AppGaps.h24,
+                      AppTitleView(),
+                      AppGaps.h38,
+                      AppFormView(),
+                      AppGaps.h46,
+                      AppButtonView(),
+                      const Spacer(),
+                      AppTipsView(),
+                    ],
+                  ),
                 ),
               ),
             ),

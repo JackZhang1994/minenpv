@@ -24,7 +24,9 @@ class SettingController extends AppGetxController {
     MenuEntity(
       imgPath: 'assets/images/mine/app_setting_menu2.png',
       title: '消息中心',
-      onTap: () {},
+      onTap: () {
+        Get.toNamed('/message');
+      },
     ),
     MenuEntity(
       imgPath: 'assets/images/mine/app_setting_menu3.png',

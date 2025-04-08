@@ -115,7 +115,21 @@ class _HomePageState extends State<HomePage> with WindowListener {
                     child: DecoratedBox(
                       decoration: BoxDecoration(
                         image: const DecorationImage(
-                          image: AssetImage('assets/images/home/home_bg.webp'),
+                          image: AssetImage('assets/images/home/app_home_bg.png'),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Positioned(
+                    top: 0,
+                    left: 0,
+                    width: 1.sw,
+                    height: 505.h,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        image: const DecorationImage(
+                          image: AssetImage('assets/images/home/app_world_map.png'),
                           fit: BoxFit.cover,
                         ),
                       ),
