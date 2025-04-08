@@ -4,10 +4,12 @@
 * @Date: 2024-06-10 16:10:48 
 */
 
-import 'package:get/get.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:get/get.dart';
 import 'package:rc_widget/rc_widget.dart';
 import 'package:yunyou_desktop/pages/home/models/gift_model.dart';
+import 'package:yunyou_desktop/utils/app_utils.dart';
 
 import '/controllers/base/app_getx_controller.dart';
 import '/controllers/public/app_node_controller.dart';
@@ -22,16 +24,20 @@ class HomeController extends AppGetxController with GetTickerProviderStateMixin 
   void onInit() {
     super.onInit();
     debugPrint('[HomeController] onInit');
-    controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 500),
-    );
+    if (!AppUtils.isMobile()) {
+      controller = AnimationController(
+        vsync: this,
+        duration: const Duration(milliseconds: 500),
+      );
+    }
     AppNodeController.to.initNodes();
   }
 
   @override
   void onClose() {
-    controller.dispose();
+    if (!AppUtils.isMobile()) {
+      controller.dispose();
+    }
     print('home controller dispose');
     super.onClose();
   }
@@ -44,7 +50,11 @@ class HomeController extends AppGetxController with GetTickerProviderStateMixin 
       return;
     }
 
-    controller.repeat();
+    if (!AppUtils.isMobile()) {
+      controller.repeat();
+    } else {
+      EasyLoading.show(status: s.isConnect.isTrue ? '关闭中' : '开启中');
+    }
 
     // await Future.delayed(const Duration(milliseconds: 500));
 
@@ -54,7 +64,11 @@ class HomeController extends AppGetxController with GetTickerProviderStateMixin 
       await s.startConnect();
     }
 
-    controller.stop();
+    if (!AppUtils.isMobile()) {
+      controller.stop();
+    } else {
+      EasyLoading.dismiss();
+    }
   }
 
   Future<void> getGift() async {
