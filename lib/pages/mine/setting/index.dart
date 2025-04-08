@@ -42,11 +42,14 @@ class _SettingPageState extends State<SettingPage> {
               child: Stack(
                 children: [
                   Positioned.fill(
-                    child: DecoratedBox(
-                      decoration: BoxDecoration(
-                        image: const DecorationImage(
-                          image: AssetImage('assets/images/home/home_bg.webp'),
-                          fit: BoxFit.cover,
+                    child: Opacity(
+                      opacity: 0.8,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          image: const DecorationImage(
+                            image: AssetImage('assets/images/home/app_home_bg.png'),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
