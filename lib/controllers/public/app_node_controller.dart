@@ -7,13 +7,15 @@
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
+import 'package:flutter_v2ray_desktop/flutter_v2ray_desktop.dart';
 import 'package:get/get.dart';
 import 'package:rc_widget/rc_widget.dart';
-import 'package:flutter_v2ray_desktop/flutter_v2ray_desktop.dart';
+import 'package:yunyou_desktop/utils/app_utils.dart';
+import 'package:yunyou_desktop/widgets/public/app_dialog.dart';
 
-import '/models/node_model.dart';
 import '/controllers/base/app_getx_controller.dart';
 import '/controllers/public/app_user_controller.dart';
+import '/models/node_model.dart';
 
 class AppNodeController extends AppGetxController {
   static AppNodeController get to => Get.find<AppNodeController>();
@@ -173,9 +175,15 @@ class AppNodeController extends AppGetxController {
   /// 开始连接
   Future<void> startConnect() async {
     final s = AppUserController.to;
-    if (!s.isVip) {
-      RcToast('VIP已过期');
-      return;
+    if (AppUtils.isMobile()) {
+      if (!_judgeIsVip()) {
+        return;
+      }
+    } else {
+      if (!s.isVip) {
+        RcToast('VIP已过期');
+        return;
+      }
     }
     print('++++++++++$nodeID');
     if (nodeID == 0) {
@@ -237,31 +245,60 @@ class AppNodeController extends AppGetxController {
   /// 切换节点
   Future<void> switchNode(SubscribeNode node) async {
     final s = AppUserController.to;
+    if (AppUtils.isMobile()) {
+      if (!_judgeIsVip()) {
+        return;
+      }
+      if (s.vipType >= node.vipType!) {
+        if (currentNode.value?.title != node.title) {
+          currentNode.value = node;
+          RcStorage.setString('nodeName', node.title!);
 
-    if (!s.isVip) {
-      RcToast('VIP已过期');
-      return;
-    }
-
-    if (s.vipType >= node.vipType!) {
-      if (currentNode.value?.title != node.title) {
-        currentNode.value = node;
-        RcStorage.setString('nodeName', node.title!);
-
-        if (isConnect.value) {
-          await stopConnect();
-          startConnect();
+          if (isConnect.value) {
+            await stopConnect();
+            startConnect();
+          }
+          // isConnect.value = true;
         }
-        // isConnect.value = true;
+      } else {
+        RcToast('请先开通该类型VIP');
+        return;
       }
     } else {
-      RcToast('请先开通该类型VIP');
-      return;
+      if (!s.isVip) {
+        RcToast('VIP已过期');
+        return;
+      }
+
+      if (s.vipType >= node.vipType!) {
+        if (currentNode.value?.title != node.title) {
+          currentNode.value = node;
+          RcStorage.setString('nodeName', node.title!);
+
+          if (isConnect.value) {
+            await stopConnect();
+            startConnect();
+          }
+          // isConnect.value = true;
+        }
+      } else {
+        RcToast('请先开通该类型VIP');
+        return;
+      }
     }
   }
 
   /// 切换代理模式
   Future<void> switchProxyMode(bool value) async {
+    if (AppUtils.isMobile()) {
+      if (!_judgeIsVip()) {
+        return;
+      }
+      if (_judgeIsSvip() && isProxyOnly.isTrue) {
+        return;
+      }
+    }
+
     isProxyOnly.value = !value;
 
     print('isProxyOnly: ${isProxyOnly.value}');
@@ -297,5 +334,45 @@ class AppNodeController extends AppGetxController {
     currentNode.value = null;
 
     await RcStorage.remove('nodes');
+  }
+
+  bool _judgeIsVip() {
+    final s = AppUserController.to;
+    if (!s.isVip) {
+      String content = '您的账户已经过期，请续费后继续体验畅快感受。';
+      content += '\n如果您刚购买完请耐心等待，会员时长会在 1 分钟内到账。';
+      Get.dialog(
+        AppDialog(
+          title: '温馨提示',
+          content: content,
+          negativeBtnText: '取消',
+          positiveBtnText: '去购买',
+          onPositiveTap: () {
+            Get.toNamed('/combo');
+          },
+        ),
+      );
+    }
+    return s.isVip;
+  }
+
+  bool _judgeIsSvip() {
+    final s = AppUserController.to;
+    if (s.vipType < 2) {
+      String content = '青铜会员无法使用安全模式，请升级会员等级后尝试。';
+      content += '\n如果您刚购买完请耐心等待，会员时长会在 1 分钟内到账。';
+      Get.dialog(
+        AppDialog(
+          title: '温馨提示',
+          content: content,
+          negativeBtnText: '取消',
+          positiveBtnText: '去升级',
+          onPositiveTap: () {
+            Get.toNamed('/combo');
+          },
+        ),
+      );
+    }
+    return s.vipType < 2;
   }
 }

@@ -15,7 +15,6 @@ import '/widgets/public/app_top_bar.dart';
 import 'controllers/register_controller.dart';
 import 'widgets/app/app_button_view.dart';
 import 'widgets/app/app_form_view.dart';
-import 'widgets/app/app_tips_view.dart';
 import 'widgets/app/app_title_view.dart';
 import 'widgets/pc/button_view.dart';
 import 'widgets/pc/form_view.dart';
@@ -63,8 +62,8 @@ class RegisterPage extends StatelessWidget {
                       AppFormView(),
                       AppGaps.h46,
                       AppButtonView(),
-                      const Spacer(),
-                      AppTipsView(),
+                      // const Spacer(),
+                      // AppTipsView(),
                     ],
                   ),
                 ),

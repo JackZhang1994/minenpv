@@ -35,16 +35,16 @@ class ComboPage extends StatelessWidget {
             appBar: AppTopBar(
               title: '会员购买',
               isMobile: true,
-              actions: RcInkWell(
-                onTap: () {
-                  // TODO 恢复购买
-                  RcToast('恢复购买');
-                },
-                child: Text(
-                  '恢复购买',
-                  style: AppThemes.of().regular14primary,
-                ),
-              ),
+              // actions: RcInkWell(
+              //   onTap: () {
+              //     // TODO 恢复购买
+              //     RcToast('恢复购买');
+              //   },
+              //   child: Text(
+              //     '恢复购买',
+              //     style: AppThemes.of().regular14primary,
+              //   ),
+              // ),
             ),
             body: SingleChildScrollView(
               child: Column(
