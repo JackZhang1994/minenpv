@@ -34,7 +34,7 @@ class RegisterController extends AppGetxController {
   }
 
   void _judgeBtnStatus() {
-    btnEnabled.value = phone.text.isNotEmpty && password.text.isNotEmpty;
+    btnEnabled.value = phone.text.isNotEmpty && password.text.length >= 8;
   }
 
   @override

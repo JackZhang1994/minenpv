@@ -5,7 +5,24 @@ import 'package:yunyou_desktop/controllers/base/app_getx_controller.dart';
 class ModifyPwdController extends AppGetxController {
   static ModifyPwdController get to => Get.find<ModifyPwdController>();
 
-  final TextEditingController password = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  var btnEnabled = false.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    passwordController.addListener(_judgeBtnStatus);
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    passwordController.removeListener(_judgeBtnStatus);
+  }
+
+  void _judgeBtnStatus() {
+    btnEnabled.value = passwordController.text.length >= 8;
+  }
 
   /// 表单提交
   Future<void> submit() async {
