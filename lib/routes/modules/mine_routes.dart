@@ -6,6 +6,7 @@
 
 import 'package:get/get.dart';
 import 'package:yunyou_desktop/pages/mine/account_setting/index.dart';
+import 'package:yunyou_desktop/pages/mine/feedback/index.dart';
 import 'package:yunyou_desktop/pages/mine/message/index.dart';
 import 'package:yunyou_desktop/pages/mine/message_detail/index.dart';
 import 'package:yunyou_desktop/pages/mine/qrcode/index.dart';
@@ -87,5 +88,10 @@ final List<GetPage> mineRoutes = [
     name: '/qrcode',
     page: () => const QrcodePage(),
     binding: QrcodePageBinding(),
+  ),
+  GetPage(
+    name: '/feedback',
+    page: () => const FeedbackPage(),
+    binding: FeedbackPageBinding(),
   ),
 ];

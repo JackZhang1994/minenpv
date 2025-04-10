@@ -38,12 +38,16 @@ class SettingController extends AppGetxController {
     MenuEntity(
       imgPath: 'assets/images/mine/app_setting_menu4.png',
       title: '在线客服',
-      onTap: () {},
+      onTap: () {
+        Get.toNamed('/support');
+      },
     ),
     MenuEntity(
       imgPath: 'assets/images/mine/app_setting_menu5.png',
       title: '反馈问题',
-      onTap: () {},
+      onTap: () {
+        Get.toNamed('/feedback');
+      },
     ),
   ];
 

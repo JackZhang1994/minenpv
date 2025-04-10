@@ -224,6 +224,14 @@ extension MobileAppTextStyles on CustomTheme {
     return TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w400, color: colors.text1);
   }
 
+  TextStyle get regular16text2 {
+    return TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w400, color: colors.text2);
+  }
+
+  TextStyle get regular16text4 {
+    return TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w400, color: colors.text4);
+  }
+
   TextStyle get regular14text1 {
     return TextStyle(fontSize: 14.sp, fontWeight: FontWeight.w400, color: colors.text1);
   }
@@ -290,6 +298,10 @@ extension MobileAppTextStyles on CustomTheme {
 
   TextStyle get semibold20text1 {
     return TextStyle(fontSize: 20.sp, fontWeight: FontWeight.w600, color: colors.text1);
+  }
+
+  TextStyle get semibold18text1 {
+    return TextStyle(fontSize: 18.sp, fontWeight: FontWeight.w600, color: colors.text1);
   }
 
   TextStyle get semibold16text1 {
