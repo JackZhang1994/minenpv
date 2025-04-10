@@ -81,8 +81,7 @@ class AccountSettingPage extends StatelessWidget {
               clipBehavior: Clip.hardEdge,
               child: RcInkWell(
                 onTap: () {
-                  // TODO 注销账户
-                  RcToast('注销账户');
+                  Get.toNamed('/sign_out');
                 },
                 child: Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16.w),

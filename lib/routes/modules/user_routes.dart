@@ -6,6 +6,7 @@
 
 import 'package:get/get.dart';
 import 'package:yunyou_desktop/pages/user/modify_pwd/index.dart';
+import 'package:yunyou_desktop/pages/user/sign_out/index.dart';
 
 import '/pages/user/login/index.dart';
 import '/pages/user/register/index.dart';
@@ -25,5 +26,10 @@ final List<GetPage> userRoutes = [
     name: '/modify_pwd',
     binding: ModifyPwdPageBinding(),
     page: () => const ModifyPwdPage(),
+  ),
+  GetPage(
+    name: '/sign_out',
+    page: () => const SignOutPage(),
+    binding: SignOutPageBinding(),
   ),
 ];
