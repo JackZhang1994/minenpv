@@ -408,27 +408,35 @@ class FlutterV2rayDesktop {
     required String config,
     ConnectionType connectionType = ConnectionType.systemProxy,
   }) async {
-    _connectionType = connectionType;
-    final proxy = await _validateConfig(config);
-    await _runXRay(config);
-    _startStatusTimer();
-    if (connectionType == ConnectionType.systemProxy) {
-      await setSystemProxy(proxy);
-    } else if (connectionType == ConnectionType.vpn) {
-      await Future.delayed(const Duration(seconds: 3));
-      await runTunnel(proxy);
+    if (Platform.isIOS || Platform.isAndroid) {
+      FlutterV2rayDesktopPlatform.instance.startVpn(jsonDecode(config));
+    } else {
+      _connectionType = connectionType;
+      final proxy = await _validateConfig(config);
+      await _runXRay(config);
+      _startStatusTimer();
+      if (connectionType == ConnectionType.systemProxy) {
+        await setSystemProxy(proxy);
+      } else if (connectionType == ConnectionType.vpn) {
+        await Future.delayed(const Duration(seconds: 3));
+        await runTunnel(proxy);
+      }
     }
   }
 
   Future<void> stopV2Ray() async {
-    _stopXRay();
-    if (_connectionType == ConnectionType.systemProxy) {
-      await setSystemProxy('');
-    } else if (_connectionType == ConnectionType.vpn) {
-      await runTunnel('');
+    if (Platform.isIOS || Platform.isAndroid) {
+      FlutterV2rayDesktopPlatform.instance.endVpn();
+    } else {
+      _stopXRay();
+      if (_connectionType == ConnectionType.systemProxy) {
+        await setSystemProxy('');
+      } else if (_connectionType == ConnectionType.vpn) {
+        await runTunnel('');
+      }
+      _statusTimer?.cancel();
+      statusListner.call(const V2rayStatus());
     }
-    _statusTimer?.cancel();
-    statusListner.call(const V2rayStatus());
   }
 
   int _getDelayFromOutput(String output, DelayType type) {
