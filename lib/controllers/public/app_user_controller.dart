@@ -12,6 +12,7 @@ import 'package:flutter_udid/flutter_udid.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:rc_widget/rc_widget.dart';
+import 'package:yunyou_desktop/utils/intercom_utils.dart';
 
 import '/controllers/base/app_getx_controller.dart';
 import '/models/user_model.dart';
@@ -116,6 +117,7 @@ class AppUserController extends AppGetxController {
       _user.value = result.data!;
     }
     loginStatus.value = result.code == 200;
+    await IntercomUtils.login();
   }
 
   /// 发送短信验证码
@@ -154,6 +156,8 @@ class AppUserController extends AppGetxController {
     _user.value = Data.init();
 
     await RcStorage.remove(RcStorageKey.token);
+    await IntercomUtils.logout();
+    await IntercomUtils.login();
   }
 
   /// 存储token

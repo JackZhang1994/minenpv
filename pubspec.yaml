@@ -65,6 +65,7 @@ dependencies:
   device_info_plus: ^11.3.0
   image_gallery_saver_plus: ^4.0.1
   image_picker: ^1.1.2
+  intercom_flutter: ^9.2.9
 
 dev_dependencies:
   flutter_test:

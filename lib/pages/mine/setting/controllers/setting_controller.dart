@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:launch_at_startup/launch_at_startup.dart';
 import 'package:yunyou_desktop/utils/app_utils.dart';
+import 'package:yunyou_desktop/utils/intercom_utils.dart';
 
 import '../../../../controllers/base/app_getx_controller.dart';
 import '../models/menu_entity.dart';
@@ -39,7 +40,11 @@ class SettingController extends AppGetxController {
       imgPath: 'assets/images/mine/app_setting_menu4.png',
       title: '在线客服',
       onTap: () {
-        Get.toNamed('/support');
+        if (AppUtils.isMobile()) {
+          IntercomUtils.displayMessenger();
+        } else {
+          Get.toNamed('/support');
+        }
       },
     ),
     MenuEntity(
