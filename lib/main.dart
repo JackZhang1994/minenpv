@@ -10,6 +10,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:get/get.dart';
+import 'package:intercom_flutter/intercom_flutter.dart';
 import 'package:launch_at_startup/launch_at_startup.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:path_provider/path_provider.dart';
@@ -52,6 +53,11 @@ Future<void> main(List<String> args) async {
 
 Future _initMobileAppsPlugins() async {
   await Device.initDeviceInfo();
+  await Intercom.instance.initialize(
+    'nloyidtl',
+    iosApiKey: 'ios_sdk-957a18f0f2a01d768d783b74ed287817e3cf569d',
+    androidApiKey: 'android_sdk-6845f71340f327cc291287033ff5a333a51dfe0a',
+  );
 }
 
 Future _initDesktopAppsPlugins() async {
