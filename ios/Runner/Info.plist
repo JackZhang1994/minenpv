@@ -25,7 +25,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSCameraUsageDescription</key>
-    <string>需要使用相机进行扫码或者拍照</string>
+    <string>需要使用相机进行拍照</string>
 	<key>NSLocalNetworkUsageDescription</key>
     <string>allow local connect</string>
     <key>NSPhotoLibraryAddUsageDescription</key>

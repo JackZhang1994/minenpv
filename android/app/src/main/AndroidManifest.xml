@@ -14,7 +14,8 @@
     <application
         android:name=".MyApp"
         android:label="vpn"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/ic_launcher"
+        android:requestLegacyExternalStorage="true">
         <activity
             android:name=".MainActivity"
             android:exported="true"
