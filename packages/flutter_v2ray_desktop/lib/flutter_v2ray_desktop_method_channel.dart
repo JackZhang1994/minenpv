@@ -14,4 +14,13 @@ class MethodChannelFlutterV2rayDesktop extends FlutterV2rayDesktopPlatform {
     final version = await methodChannel.invokeMethod<String>('getXRayPath');
     return version;
   }
+
+  @override
+  Future startVpn(Map config) async {
+    return await methodChannel.invokeMethod('endVpn',config);
+  }
+  @override
+  Future endVpn() async {
+    return await methodChannel.invokeMethod('endVpn');
+  }
 }
