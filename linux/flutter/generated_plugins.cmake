@@ -3,6 +3,7 @@
 #
 
 list(APPEND FLUTTER_PLUGIN_LIST
+  file_selector_linux
   flutter_udid
   flutter_v2ray_desktop
   screen_retriever_linux

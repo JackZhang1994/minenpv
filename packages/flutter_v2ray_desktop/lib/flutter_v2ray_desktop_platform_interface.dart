@@ -26,4 +26,12 @@ abstract class FlutterV2rayDesktopPlatform extends PlatformInterface {
   Future<String?> getXRayPath() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
+
+  Future startVpn(Map config) {
+    throw UnimplementedError('platformVersion() has not been implemented.');
+  }
+  Future endVpn() {
+    throw UnimplementedError('platformVersion() has not been implemented.');
+  }
+
 }
