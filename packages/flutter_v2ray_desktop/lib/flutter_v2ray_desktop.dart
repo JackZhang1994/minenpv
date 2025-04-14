@@ -409,7 +409,7 @@ class FlutterV2rayDesktop {
     ConnectionType connectionType = ConnectionType.systemProxy,
   }) async {
     if (Platform.isIOS || Platform.isAndroid) {
-      FlutterV2rayDesktopPlatform.instance.startVpn(jsonDecode(config));
+      FlutterV2rayDesktopPlatform.instance.start(jsonDecode(config));
     } else {
       _connectionType = connectionType;
       final proxy = await _validateConfig(config);
@@ -426,7 +426,7 @@ class FlutterV2rayDesktop {
 
   Future<void> stopV2Ray() async {
     if (Platform.isIOS || Platform.isAndroid) {
-      FlutterV2rayDesktopPlatform.instance.endVpn();
+      FlutterV2rayDesktopPlatform.instance.stop();
     } else {
       _stopXRay();
       if (_connectionType == ConnectionType.systemProxy) {

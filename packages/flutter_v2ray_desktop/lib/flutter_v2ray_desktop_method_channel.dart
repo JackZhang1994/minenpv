@@ -16,11 +16,11 @@ class MethodChannelFlutterV2rayDesktop extends FlutterV2rayDesktopPlatform {
   }
 
   @override
-  Future startVpn(Map config) async {
-    return await methodChannel.invokeMethod('endVpn',config);
+  Future start(Map config) async {
+    return await methodChannel.invokeMethod('start',config);
   }
   @override
-  Future endVpn() async {
-    return await methodChannel.invokeMethod('endVpn');
+  Future stop() async {
+    return await methodChannel.invokeMethod('stop');
   }
 }
