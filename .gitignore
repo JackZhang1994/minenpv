@@ -32,5 +32,6 @@ lib/generated
 devtools_options.yaml
 
 packages/flutter_v2ray_desktop/.dart_tool/
+packages/flutter_v2ray_desktop/example/pubspec.lock
 
 
