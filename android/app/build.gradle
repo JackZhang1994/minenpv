@@ -33,6 +33,8 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+        multiDexEnabled true
+
     }
 
     buildTypes {
@@ -49,7 +51,10 @@ java {
         languageVersion.set(JavaLanguageVersion.of(17))
     }
 }
-
+dependencies {
+    // ... 其他依赖 ...
+    implementation 'androidx.multidex:multidex:2.0.1'
+}
 flutter {
     source = "../.."
 }
