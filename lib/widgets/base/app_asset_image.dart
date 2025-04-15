@@ -13,6 +13,7 @@ class AppAssetImage extends StatelessWidget {
     this.width,
     this.height,
     this.padding,
+    this.fit,
   });
 
   const AppAssetImage.square(
@@ -20,6 +21,7 @@ class AppAssetImage extends StatelessWidget {
     super.key,
     this.padding,
     double? dimension,
+    this.fit,
   })  : width = dimension,
         height = dimension;
 
@@ -27,6 +29,7 @@ class AppAssetImage extends StatelessWidget {
   final double? width;
   final double? height;
   final EdgeInsetsGeometry? padding;
+  final BoxFit? fit;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +37,7 @@ class AppAssetImage extends StatelessWidget {
       name,
       width: width,
       height: height,
-      fit: BoxFit.cover,
+      fit: fit ?? BoxFit.cover,
     );
 
     if (padding != null) {

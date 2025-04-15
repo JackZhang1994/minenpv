@@ -127,7 +127,7 @@ class _VipStatusWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: 343.w,
-      height: 129.w,
+      height: 129.h,
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
       decoration: BoxDecoration(
         image: DecorationImage(
@@ -149,7 +149,12 @@ class _VipStatusWidget extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              AppAssetImage(logoPath, width: logoWidth, height: 41.h),
+              AppAssetImage(
+                logoPath,
+                width: logoWidth,
+                height: 41.h,
+                fit: BoxFit.contain,
+              ),
               Text.rich(
                 TextSpan(
                   children: [

@@ -61,7 +61,7 @@ class AppPersonalInfoView extends StatelessWidget {
                       onTap: () => v.changePwdVisibility(),
                       child: Obx(
                         () {
-                          String password = '123456';
+                          String password = s.user.password ?? '';
                           if (v.pwdVisible.isFalse) {
                             password = '*' * password.length;
                           }

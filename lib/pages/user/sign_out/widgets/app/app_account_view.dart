@@ -25,9 +25,14 @@ class AppAccountView extends StatelessWidget {
             'assets/images/mine/app_avatar.png',
             dimension: 24.w,
           ),
-          Text(
-            t.username,
-            style: AppThemes.of().medium16text1,
+          AppGaps.w12,
+          Flexible(
+            child: Text(
+              t.username,
+              style: AppThemes.of().medium16text1,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ],
       ),

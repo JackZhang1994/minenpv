@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:rc_widget/rc_widget.dart';
 import 'package:yunyou_desktop/controllers/base/app_getx_controller.dart';
+import 'package:yunyou_desktop/controllers/public/app_user_controller.dart';
+import 'package:yunyou_desktop/models/message_model.dart';
 
 class ModifyPwdController extends AppGetxController {
   static ModifyPwdController get to => Get.find<ModifyPwdController>();
@@ -26,37 +29,30 @@ class ModifyPwdController extends AppGetxController {
 
   /// 表单提交
   Future<void> submit() async {
-    const String url = '/api/public/register';
+    closeKeyboard();
+    switchClickStatus(false);
 
-    // if (isNotAllow()) return;
-    // closeKeyboard();
-    // switchClickStatus(false);
-    //
-    // final Map<String, dynamic> data = {
-    //   "deviceId": AppUserController.to.deviceId,
-    //   "partnerId": 1,
-    //   "email": phone.text,
-    //   "code": verifycode.text,
-    //   "password": password.text,
-    // };
-    //
-    // final result = await RcHttp.post<MessageModel>(
-    //   url,
-    //   data: data,
-    //   cancelToken: cancelToken,
-    //   errorJson: () => MessageModel.init(),
-    //   fromJson: (json) => MessageModel.fromJson(json),
-    // );
-    //
-    // if (result.code == 200) {
-    //   await AppUserController.to.setToken(result.data);
-    //   await AppUserController.to.getUser();
-    //   await AppNodeController.to.initNodes();
-    //   Get.back();
-    // } else {
-    //   RcToast(result.msg);
-    // }
+    final String password = passwordController.text;
+
+    const String url = '/api/public/update_password';
+    final Map<String, dynamic> data = {'password': password};
+    final result = await RcHttp.post<MessageModel>(
+      url,
+      data: data,
+      cancelToken: cancelToken,
+      errorJson: () => MessageModel.init(),
+      fromJson: (json) => MessageModel.fromJson(json),
+    );
 
     switchClickStatus(true);
+
+    if (result.code == 200) {
+      final AppUserController t = AppUserController.to;
+      t.updateUser(password);
+      RcToast('修改密码成功');
+      Get.back();
+    } else {
+      RcToast(result.msg);
+    }
   }
 }

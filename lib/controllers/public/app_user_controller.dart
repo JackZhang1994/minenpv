@@ -160,6 +160,12 @@ class AppUserController extends AppGetxController {
     await IntercomUtils.login();
   }
 
+  /// 更新用户属性
+  void updateUser(String password) {
+    _user.value.password = password;
+    _user.refresh();
+  }
+
   /// 存储token
   Future<void> setToken(String token) async {
     await RcStorage.setString(RcStorageKey.token, token);
