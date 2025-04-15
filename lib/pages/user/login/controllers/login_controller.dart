@@ -4,11 +4,14 @@
 * @Date: 2024-06-09 14:15:28 
 */
 
+import 'dart:convert';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rc_widget/rc_widget.dart';
 import 'package:yunyou_desktop/controllers/public/app_node_controller.dart';
+import 'package:yunyou_desktop/utils/app_utils.dart';
 
 import '/controllers/base/app_getx_controller.dart';
 import '/controllers/public/app_user_controller.dart';
@@ -52,7 +55,7 @@ class LoginController extends AppGetxController {
     if (isNotClick) return true;
 
     if (phone.text.isEmpty) {
-      RcToast('请输入邮箱');
+      RcToast('请输入账号');
       return true;
     }
 
@@ -79,13 +82,24 @@ class LoginController extends AppGetxController {
     closeKeyboard();
     switchClickStatus(false);
 
-    final Map<String, dynamic> data = {
-      "platform": AppUserController.to.platform,
-      'deviceId': AppUserController.to.deviceId,
-      'partnerId': 1,
-      'email': phone.text,
-      if (isShowPassword.value) 'password': password.text else 'code': verifycode.text,
-    };
+    final Map<String, dynamic> data;
+
+    if (AppUtils.isMobile()) {
+      data = {
+        'username': phone.text,
+        'password': password.text,
+        'deviceId': AppUserController.to.deviceId,
+        'deviceInfo': jsonEncode({'platform': AppUserController.to.platform})
+      };
+    } else {
+      data = {
+        "platform": AppUserController.to.platform,
+        'deviceId': AppUserController.to.deviceId,
+        'partnerId': 1,
+        'email': phone.text,
+        if (isShowPassword.value) 'password': password.text else 'code': verifycode.text,
+      };
+    }
 
     final result = await RcHttp.post<MessageModel>(
       url,

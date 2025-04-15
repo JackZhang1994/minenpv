@@ -51,6 +51,7 @@ class Data {
   int? receiveVipCount;
   DateTime? vipEndTime;
   int? isToDayReward;
+  String? username;
 
   Data({
     this.uid,
@@ -61,6 +62,7 @@ class Data {
     this.receiveVipCount,
     this.vipEndTime,
     this.isToDayReward,
+    this.username,
   });
 
   factory Data.init() => Data(
@@ -72,6 +74,7 @@ class Data {
         receiveVipCount: 0,
         vipEndTime: DateTime.parse('1970-01-01 08:00:00.000Z'),
         isToDayReward: 0,
+        username: '',
       );
 
   factory Data.fromJson(Map<String, dynamic> json) => Data(
@@ -81,9 +84,9 @@ class Data {
         rewardDuration: json["rewardDuration"],
         vipType: json["vipType"],
         receiveVipCount: json["receiveVipCount"],
-        vipEndTime:
-            DateTime.parse(json["vipEndTime"] ?? "1970-01-01 08:00:00.000Z"),
+        vipEndTime: DateTime.parse(json["vipEndTime"] ?? "1970-01-01 08:00:00.000Z"),
         isToDayReward: json["isToDayReward"],
+        username: json["username"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -95,5 +98,6 @@ class Data {
         "receiveVipCount": receiveVipCount,
         "vipEndTime": vipEndTime?.toIso8601String(),
         "isToDayReward": isToDayReward,
+        "username": username,
       };
 }

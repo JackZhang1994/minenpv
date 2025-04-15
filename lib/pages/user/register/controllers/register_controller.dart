@@ -7,10 +7,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:rc_widget/rc_widget.dart';
+import 'package:yunyou_desktop/utils/app_utils.dart';
 
 import '/controllers/base/app_getx_controller.dart';
 import '/models/message_model.dart';
-import '../../../../controllers/public/app_node_controller.dart';
 import '../../../../controllers/public/app_user_controller.dart';
 
 class RegisterController extends AppGetxController {
@@ -53,15 +53,9 @@ class RegisterController extends AppGetxController {
     if (isNotClick) return true;
 
     if (phone.text.isEmpty) {
-      RcToast('请输入邮箱');
+      RcToast('请输入账号');
       return true;
     }
-
-    if (!phone.text.isEmail) {
-      RcToast('邮箱格式错误');
-      return true;
-    }
-
     if (password.text.isEmpty) {
       RcToast('请输入密码');
       return true;
@@ -78,13 +72,22 @@ class RegisterController extends AppGetxController {
     closeKeyboard();
     switchClickStatus(false);
 
-    final Map<String, dynamic> data = {
-      "deviceId": AppUserController.to.deviceId,
-      "partnerId": 1,
-      "email": phone.text,
-      "code": verifycode.text,
-      "password": password.text,
-    };
+    final Map<String, dynamic> data;
+    if (AppUtils.isMobile()) {
+      data = {
+        'deviceId': AppUserController.to.deviceId,
+        'username': phone.text,
+        'password': password.text,
+      };
+    } else {
+      data = {
+        'deviceId': AppUserController.to.deviceId,
+        'partnerId': 1,
+        'email': phone.text,
+        'code': verifycode.text,
+        'password': password.text,
+      };
+    }
 
     final result = await RcHttp.post<MessageModel>(
       url,
@@ -95,10 +98,13 @@ class RegisterController extends AppGetxController {
     );
 
     if (result.code == 200) {
-      await AppUserController.to.setToken(result.data);
-      await AppUserController.to.getUser();
-      await AppNodeController.to.initNodes();
-      Get.back();
+      RcToast('注册成功');
+      // await AppUserController.to.setToken(result.data);
+      // await AppUserController.to.getUser();
+      // await AppNodeController.to.initNodes();
+      Future.delayed(const Duration(milliseconds: 300), () {
+        Get.back();
+      });
     } else {
       RcToast(result.msg);
     }

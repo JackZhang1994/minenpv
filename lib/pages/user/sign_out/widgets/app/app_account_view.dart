@@ -26,7 +26,7 @@ class AppAccountView extends StatelessWidget {
             dimension: 24.w,
           ),
           Text(
-            t.email.toString(),
+            t.username,
             style: AppThemes.of().medium16text1,
           ),
         ],

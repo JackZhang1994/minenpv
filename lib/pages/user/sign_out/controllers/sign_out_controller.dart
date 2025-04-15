@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:rc_widget/rc_widget.dart';
 import 'package:yunyou_desktop/controllers/public/app_node_controller.dart';
 import 'package:yunyou_desktop/controllers/public/app_user_controller.dart';
+import 'package:yunyou_desktop/models/message_model.dart';
 
 import '/controllers/base/app_getx_controller.dart';
 
@@ -30,37 +31,30 @@ class SignOutController extends AppGetxController {
   }
 
   void signOut() async {
-    // TODO 注销接口
     closeKeyboard();
     switchClickStatus(false);
-    await Future.delayed(Duration(seconds: 2));
+
+    const String url = '/api/public/remove';
+
+    final result = await RcHttp.get<MessageModel>(
+      url,
+      cancelToken: cancelToken,
+      errorJson: () => MessageModel.init(),
+      fromJson: (json) => MessageModel.fromJson(json),
+    );
+
     switchClickStatus(true);
 
-    await Future.wait([
-      AppUserController.to.resetUser(),
-      AppNodeController.to.resetNodes(),
-    ]);
-    RcTag.updateTag();
-    Get.offAllNamed('/home');
+    if (result.code == 200) {
+      await Future.wait([
+        AppUserController.to.resetUser(),
+        AppNodeController.to.resetNodes(),
+      ]);
 
-    // const String url = '/api/feedback/add';
-    // final Map<String, dynamic> data = {
-    //   'type': curFeedbackIndex.value,
-    //   'email': emailController.text,
-    //   'textContent': descriptionController.text,
-    //   'imgContent': uploadedFilePaths.join(','),
-    // };
-    // final result = await RcHttp.post<MessageModel>(
-    //   url,
-    //   data: data,
-    //   cancelToken: cancelToken,
-    //   errorJson: () => MessageModel.init(),
-    //   fromJson: (json) => MessageModel.fromJson(json),
-    // );
-    // if (result.code == 200) {
-    //   RcToast('提交反馈成功');
-    // } else {
-    //   RcToast(result.msg);
-    // }
+      RcTag.updateTag();
+      Get.offAllNamed('/home');
+    } else {
+      RcToast(result.msg);
+    }
   }
 }

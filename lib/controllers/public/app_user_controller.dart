@@ -48,7 +48,7 @@ class AppUserController extends AppGetxController {
   String get uid => user.uid?.toString() ?? '';
 
   /// 邮箱
-  String get email => user.email?.toString() ?? '';
+  String get username => user.username ?? '';
 
   /// 会员到期时间
   String get endTimeShow =>

@@ -47,7 +47,7 @@ class AppPersonalInfoView extends StatelessWidget {
               children: [
                 Obx(
                   () => Text(
-                    s.email,
+                    s.username,
                     style: AppThemes.of().medium18text1,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,

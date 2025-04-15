@@ -62,7 +62,8 @@ enum Env {
   /// 开发环境
   develop(
     isReport: false,
-    apiUrl: 'http://43.156.4.45:8011',
+    apiUrl: 'http://34.92.67.251/prod-api',
+    // apiUrl: 'http://43.156.4.45:8011', // old
   ),
 
   /// 生产环境

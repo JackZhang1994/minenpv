@@ -1,7 +1,5 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:rc_widget/rc_widget.dart';
 import 'package:yunyou_desktop/pages/user/login/controllers/login_controller.dart';
 import 'package:yunyou_desktop/themes/index.dart';
 import 'package:yunyou_desktop/widgets/public/app_button.dart';
@@ -46,22 +44,22 @@ class AppButtonView extends StatelessWidget {
             ),
           ),
         ),
-        Visibility(
-          visible: kDebugMode,
-          child: Spacer(),
-        ),
-        Visibility(
-          visible: kDebugMode,
-          child: Obx(
-            () => AppButton(
-              text: '游客登录',
-              loadingText: '正在登录',
-              margin: EdgeInsets.symmetric(vertical: 16.h),
-              disabled: s.isNotClick,
-              onTap: s.guestLogin,
-            ),
-          ),
-        ),
+        // Visibility(
+        //   visible: kDebugMode,
+        //   child: Spacer(),
+        // ),
+        // Visibility(
+        //   visible: kDebugMode,
+        //   child: Obx(
+        //     () => AppButton(
+        //       text: '游客登录',
+        //       loadingText: '正在登录',
+        //       margin: EdgeInsets.symmetric(vertical: 16.h),
+        //       disabled: s.isNotClick,
+        //       onTap: s.guestLogin,
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }

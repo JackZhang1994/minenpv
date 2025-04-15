@@ -4,14 +4,14 @@
 * @Date: 2024-06-30 12:08:32 
 */
 
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:rc_widget/rc_widget.dart';
-import 'package:flutter_easyloading/flutter_easyloading.dart';
 
-import '/models/message_model.dart';
 import '/controllers/base/app_getx_controller.dart';
-import '/controllers/public/app_user_controller.dart';
 import '/controllers/public/app_node_controller.dart';
+import '/controllers/public/app_user_controller.dart';
+import '/models/message_model.dart';
 
 class MineController extends AppGetxController {
   static MineController get to => Get.find<MineController>();
@@ -21,7 +21,7 @@ class MineController extends AppGetxController {
 
     EasyLoading.show(status: '退出中', dismissOnTap: true);
 
-    const String url = '/logout';
+    const String url = '/api/public/logout';
 
     final result = await RcHttp.get<MessageModel>(
       url,
@@ -38,6 +38,8 @@ class MineController extends AppGetxController {
 
       RcTag.updateTag();
       Get.offAllNamed('/home');
+    } else {
+      RcToast(result.msg);
     }
 
     EasyLoading.dismiss();
