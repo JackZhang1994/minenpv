@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   plugin_platform_interface: ^2.0.2
-  path:
+  flutter_v2ray: 1.0.10
 
 dev_dependencies:
   flutter_test:
@@ -42,6 +42,9 @@ flutter:
       windows:
         pluginClass: FlutterV2rayDesktopPluginCApi
       ios:
+        pluginClass: FlutterV2rayDesktopPlugin
+      android:
+        package: com.example.flutter_v2ray_desktop
         pluginClass: FlutterV2rayDesktopPlugin
 
   # To add assets to your plugin package, add an assets section, like this:

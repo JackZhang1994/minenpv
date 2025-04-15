@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 export 'v2ray_parser.dart';
 
+import 'package:flutter_v2ray/flutter_v2ray.dart';
+
 import 'flutter_v2ray_desktop_platform_interface.dart';
 import 'package:path/path.dart' as path;
 import 'dart:io';
@@ -35,7 +37,7 @@ class V2rayStatus {
   }
 }
 
-class FlutterV2rayDesktop {
+class FlutterV2rayDesktop with AndroidV2ray{
   final void Function(String log) logListner;
   final void Function(V2rayStatus status) statusListner;
   Process? _xray;
@@ -408,8 +410,12 @@ class FlutterV2rayDesktop {
     required String config,
     ConnectionType connectionType = ConnectionType.systemProxy,
   }) async {
-    if (Platform.isIOS || Platform.isAndroid) {
+    if (Platform.isIOS) {
       FlutterV2rayDesktopPlatform.instance.start(jsonDecode(config));
+    } else if(Platform.isAndroid){
+      initAndroidV2ray(statusListner: statusListner);
+      startAndroidV2ray(config);
+
     } else {
       _connectionType = connectionType;
       final proxy = await _validateConfig(config);
@@ -425,8 +431,10 @@ class FlutterV2rayDesktop {
   }
 
   Future<void> stopV2Ray() async {
-    if (Platform.isIOS || Platform.isAndroid) {
+    if (Platform.isIOS) {
       FlutterV2rayDesktopPlatform.instance.stop();
+    } else if (Platform.isAndroid) {
+      stopAndroidV2ray();
     } else {
       _stopXRay();
       if (_connectionType == ConnectionType.systemProxy) {
@@ -493,5 +501,62 @@ class FlutterV2rayDesktop {
     final knife = path.join(xraypath, 'xray-knife');
     final output = await Process.run(knife, ['net', type.name, '-c', url]);
     return _getDelayFromOutput(output.stdout, type);
+  }
+}
+
+/// Android V2ray 配置
+mixin AndroidV2ray {
+  FlutterV2ray? androidV2ray;
+
+  void initAndroidV2ray({
+    Function(String log)? logListner,
+    Function(V2rayStatus status)? statusListner,
+  }) {
+
+    // final Duration duration;
+    // final ConnectionState state;
+    // final int download;
+    // final int upload;
+    // final int totalDownload;
+    // final int totalUpload;
+
+    androidV2ray = FlutterV2ray(
+      onStatusChanged: (status) {
+        /// todo 类型转换需要实测
+        statusListner?.call(V2rayStatus(
+          duration: Duration(seconds: int.parse(status.duration)),
+          state: status.state == 'DISCONNECTED' ? ConnectionState.disconnected : ConnectionState.connected,
+          download: status.download,
+          upload: status.upload,
+          totalDownload: status.download,
+          totalUpload: status.upload,
+        ));
+      },
+    );
+  }
+
+  Future<void> startAndroidV2ray(String config) async {
+    if (androidV2ray == null) {
+      return;
+    }
+    // You must initialize V2Ray before using it.
+    await androidV2ray!.initializeV2Ray();
+// v2ray share link like vmess://, vless://, ...
+    String link = config;
+    V2RayURL parser = FlutterV2ray.parseFromURL(link);
+    androidV2ray!.startV2Ray(
+      remark: parser.remark,
+      config: parser.getFullConfiguration(),
+      blockedApps: null,
+      bypassSubnets: null,
+      proxyOnly: false,
+    );
+  }
+
+  void stopAndroidV2ray() {
+    if (androidV2ray == null) {
+      return;
+    }
+    androidV2ray!.stopV2Ray();
   }
 }
