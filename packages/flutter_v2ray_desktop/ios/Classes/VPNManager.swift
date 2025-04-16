@@ -38,8 +38,8 @@ extension VPNManager {
         var isSelected = false
         
         init(name: String, address: String, port: Int, crypto: Crypto, password: String) {
-//             self.id = App.timestampId
-             self.id = "2222222"
+//              self.id = App.timestampId
+            self.id = "2222222"
             self.name = name
             self.address = address
             self.port = port
@@ -75,6 +75,7 @@ extension VPNManager {
                 do {
                     try manager.connection.startVPNTunnel(options: [:])
                 } catch {
+                    print(error.localizedDescription)
 //                     YYHud.showTip(error.localizedDescription)
                 }
             }
@@ -154,11 +155,13 @@ extension VPNManager {
             manager.saveToPreferences {
                 if let error = $0 {
 //                     YYHud.showTip(error.localizedDescription)
+                    print(error.localizedDescription)
                     complition(nil)
                 } else {
                     manager.loadFromPreferences { e in
                         if let err = e {
 //                             YYHud.showTip(err.localizedDescription)
+                            print(err.localizedDescription)
                             complition(nil)
                         } else {
                             self.addStatusObserver()
@@ -213,11 +216,11 @@ extension NETunnelProviderManager {
         let proxy = NEProxySettings()
         
         //是否启动自动代理配置
-        if(iszhineng as! String == "zhineng"){
-            proxy.autoProxyConfigurationEnabled = true
-        }else{
+//        if(iszhineng as! String == "zhineng"){
+//            proxy.autoProxyConfigurationEnabled = true
+//        }else{
             proxy.autoProxyConfigurationEnabled = false
-        }
+//        }
         
         proxy.proxyAutoConfigurationURL = URL(string: "http://\(config.address)/pac")
         originConfig.proxySettings = proxy

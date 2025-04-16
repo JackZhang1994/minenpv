@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:convert';
 export 'v2ray_parser.dart';
 
+import 'package:flutter_v2ray_desktop/sing/parser.dart';
+
 import 'flutter_v2ray_desktop_platform_interface.dart';
 import 'package:path/path.dart' as path;
 import 'dart:io';
@@ -406,10 +408,14 @@ class FlutterV2rayDesktop {
   ///   ConnectionType.vpn required (Adminstrator in windows) or (root privilege in unix base system)
   Future<void> startV2Ray({
     required String config,
+    Map? configMap,
     ConnectionType connectionType = ConnectionType.systemProxy,
   }) async {
     if (Platform.isIOS || Platform.isAndroid) {
-      FlutterV2rayDesktopPlatform.instance.start(jsonDecode(config));
+     if(configMap == null){
+       return;
+     }
+      FlutterV2rayDesktopPlatform.instance.start(configMap);
     } else {
       _connectionType = connectionType;
       final proxy = await _validateConfig(config);
