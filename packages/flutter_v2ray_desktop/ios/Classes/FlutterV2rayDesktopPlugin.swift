@@ -47,13 +47,14 @@ public class FlutterV2rayDesktopPlugin: NSObject, FlutterPlugin {
             password: args["password"] as! String
         )
         
-        let status = args["status"] as! Bool
-        if(status==false){
-            VPNManager.shared.connect(with: config)
-        }else{
-            VPNManager.shared.disconnect()
-        }
-        
+        VPNManager.shared.connect(with: config)
+//        let status = args["status"] as! Bool
+//        if(status==false){
+//            VPNManager.shared.connect(with: config)
+//        }else{
+//            VPNManager.shared.disconnect()
+//        }
+//        
     }
     
     private func handleStop(result: @escaping FlutterResult) {

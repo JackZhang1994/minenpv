@@ -38,8 +38,8 @@ extension VPNManager {
         var isSelected = false
         
         init(name: String, address: String, port: Int, crypto: Crypto, password: String) {
-//             self.id = App.timestampId
-             self.id = "2222222"
+//              self.id = App.timestampId
+            self.id = "2222222"
             self.name = name
             self.address = address
             self.port = port
@@ -75,6 +75,7 @@ extension VPNManager {
                 do {
                     try manager.connection.startVPNTunnel(options: [:])
                 } catch {
+                    print(error.localizedDescription)
 //                     YYHud.showTip(error.localizedDescription)
                 }
             }
@@ -97,11 +98,45 @@ public final class VPNManager {
         }
     }
     
+//    lazy fileprivate var ruleConf: String = {
+//        // 获取插件资源 Bundle
+//        guard let bundle = Bundle(identifier: "org.cocoapods.flutter-v2ray-desktop") else {
+//            fatalError("Failed to load YourPluginName bundle.")
+//        }
+//
+//        // 读取文本文件
+//        if let path = bundle.path(forResource: "NEKitRule", ofType: "conf") {
+//            do {
+//                let content = try String(contentsOfFile: path)
+//                print(content)
+//            } catch {
+//                print("读取文件失败: \(error)")
+//            }
+//        }
+////        let path = Bundle.main.path(forResource: "NEKitRule", ofType: "conf")!
+//        let data = try! Foundation.Data(contentsOf: URL(fileURLWithPath: path))
+//        let str = String(data: data, encoding: String.Encoding.utf8)!
+//        return str
+//    }()
+    
     lazy fileprivate var ruleConf: String = {
-        let path = Bundle.main.path(forResource: "NEKitRule", ofType: "conf")!
-        let data = try! Foundation.Data(contentsOf: URL(fileURLWithPath: path))
-        let str = String(data: data, encoding: String.Encoding.utf8)!
-        return str
+        // 获取插件资源 Bundle
+        guard let bundle = Bundle(identifier: "org.cocoapods.flutter-v2ray-desktop") else {
+            fatalError("Failed to load YourPluginName bundle.")
+        }
+        var content = ""
+        // 读取文本文件
+        if let path = bundle.path(forResource: "NEKitRule", ofType: "conf") {
+            do {
+                content = try String(contentsOfFile: path)
+                print(content)
+            } catch {
+                print("读取文件失败: \(error)")
+            }
+        } else {
+            print("未找到文件 \(String(describing: bundle.path(forResource: "NEKitRule", ofType: "conf"))) ")
+        }
+        return content
     }()
     
     init() {
@@ -154,11 +189,13 @@ extension VPNManager {
             manager.saveToPreferences {
                 if let error = $0 {
 //                     YYHud.showTip(error.localizedDescription)
+                    print(error.localizedDescription)
                     complition(nil)
                 } else {
                     manager.loadFromPreferences { e in
                         if let err = e {
 //                             YYHud.showTip(err.localizedDescription)
+                            print(err.localizedDescription)
                             complition(nil)
                         } else {
                             self.addStatusObserver()
@@ -209,15 +246,15 @@ extension NETunnelProviderManager {
          [[NSUserDefaults standardUserDefaults] setObject:@"quanju" forKey:@"quanju"];
          [[NSUserDefaults standardUserDefaults] synchronize];
          */
-        let iszhineng = UserDefaults.standard.object(forKey: "quanju")
+//        let iszhineng = UserDefaults.standard.object(forKey: "quanju")
         let proxy = NEProxySettings()
         
         //是否启动自动代理配置
-        if(iszhineng as! String == "zhineng"){
-            proxy.autoProxyConfigurationEnabled = true
-        }else{
+//        if(iszhineng as! String == "zhineng"){
+//            proxy.autoProxyConfigurationEnabled = true
+//        }else{
             proxy.autoProxyConfigurationEnabled = false
-        }
+//        }
         
         proxy.proxyAutoConfigurationURL = URL(string: "http://\(config.address)/pac")
         originConfig.proxySettings = proxy

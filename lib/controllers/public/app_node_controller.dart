@@ -222,7 +222,20 @@ class AppNodeController extends AppGetxController {
       );
     }
     isConnect.value = true;
-    await flutterV2ray.startV2Ray(config: json.json(), connectionType: ConnectionType.systemProxy);
+
+    Map configMap = {
+      'crypto': currentNode.value?.algorithm,
+      'name': currentNode.value?.title,
+      'password': currentNode.value?.password,
+      'address': currentNode.value?.url,
+      'port': currentNode.value?.port,
+    };
+
+    await flutterV2ray.startV2Ray(
+      config: json.json(),
+      configMap: configMap,
+      connectionType: ConnectionType.systemProxy,
+    );
 
     // try {
 

@@ -64,9 +64,26 @@ class _HomeState extends State<Home> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    final outbound = SingOutbound.fromUri(link.text);
+
+                    Map tmp =  {
+                      "tag": "dart_v2ray_parser",
+                      "type": "shadowsocks",
+                      "method": "aes-256-cfb",
+                      "password": "S7lCJz",
+                      "server": "hk16.kkp.wtf",
+                      "server_port": 23541,
+                    };
+                    Map configMap = {
+                      'name': 'dart_v2ray_parser',
+                      'crypto': 'aes-256-cfb',
+                      'password': "S7lCJz",
+                      'address': "hk16.kkp.wtf",
+                      'port': 23541,
+                    };
+                    // final outbound = SingOutbound.fromUri(link.text);
                     v2ray.startV2Ray(
-                      config: V2raySingParser.quick(outbound).json(),
+                      config:'',
+                      configMap: configMap,
                       connectionType: connectionType,
                     );
                   },
