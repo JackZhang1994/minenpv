@@ -160,9 +160,9 @@ extension VPNManager {
     private func createProviderManager() -> NETunnelProviderManager {
         let manager = NETunnelProviderManager()
         let conf = NETunnelProviderProtocol()
-        conf.serverAddress = "700加速器"
+        conf.serverAddress = self.config.address
         manager.protocolConfiguration = conf
-        manager.localizedDescription = "700加速器"
+        manager.localizedDescription = (self.config.name)+"@"+(self.config.address)
         
         return manager
     }
@@ -175,6 +175,11 @@ extension VPNManager {
     
     func loadAndCreateProviderManager(_ complition: @escaping (NETunnelProviderManager?) -> Void) {
         NETunnelProviderManager.loadAllFromPreferences { (managers, error) in
+          
+            if let error = error {
+                print("加载隧道配置时出错: \(error.localizedDescription)")
+                return
+            }
             guard let managers = managers else { return }
             let manager: NETunnelProviderManager
             if managers.count > 0 {
@@ -189,13 +194,13 @@ extension VPNManager {
             manager.saveToPreferences {
                 if let error = $0 {
 //                     YYHud.showTip(error.localizedDescription)
-                    print(error.localizedDescription)
+                    print("saveToPreferences" + error.localizedDescription)
                     complition(nil)
                 } else {
                     manager.loadFromPreferences { e in
                         if let err = e {
 //                             YYHud.showTip(err.localizedDescription)
-                            print(err.localizedDescription)
+                            print("loadFromPreferences" + err.localizedDescription)
                             complition(nil)
                         } else {
                             self.addStatusObserver()
