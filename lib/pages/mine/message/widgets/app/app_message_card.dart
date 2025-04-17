@@ -36,14 +36,14 @@ class AppMessageCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  entity.title,
+                  entity.noticeTitle,
                   style: AppThemes.of().medium16text1,
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
                 ),
                 AppGaps.h4,
                 Text(
-                  entity.content,
+                  entity.normalContent,
                   style: AppThemes.of().medium14text3,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,

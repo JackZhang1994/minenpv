@@ -41,10 +41,11 @@ class MessageController extends AppGetxController {
   }
 
   void onRequestData({bool isRefresh = false}) async {
-    const String url = '/api/hot_app/list';
+    const String url = '/api/notice/list';
     final Map<String, dynamic> params = {
       'pageSize': pageSize,
       'pageNum': page,
+      'status': 0,
     };
 
     final result = await RcHttp.get<MessageModel>(
@@ -59,7 +60,7 @@ class MessageController extends AppGetxController {
       if (isRefresh) {
         data.clear();
       }
-      data.addAll(result.data);
+      data.addAll(result.rows);
       page++;
       switchLoadStatus(LoadStatus.success);
     } else {

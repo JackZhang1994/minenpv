@@ -1,58 +1,68 @@
+import 'package:html/dom.dart';
+import 'package:html/parser.dart';
 import 'package:intl/intl.dart';
 
 class MessageModel {
   final String msg;
   final int code;
-  final List<MessageEntity> data;
+  final int total;
+  final List<MessageEntity> rows;
 
   MessageModel({
     required this.msg,
     required this.code,
-    required this.data,
+    required this.total,
+    required this.rows,
   });
 
   factory MessageModel.fromJson(Map<String, dynamic> json) {
     return MessageModel(
       msg: json['msg'] ?? '',
       code: json['code'] ?? 0,
-      data: (json['data'] as List?)?.map((e) => MessageEntity.fromJson(e)).toList() ?? [],
+      total: json['total'] ?? 0,
+      rows: (json['rows'] as List?)?.map((e) => MessageEntity.fromJson(e)).toList() ?? [],
     );
   }
 
-  factory MessageModel.init() => MessageModel(msg: '', code: 0, data: []);
+  factory MessageModel.init() => MessageModel(msg: '', code: 0, total: 0, rows: []);
 }
 
 class MessageEntity {
-  final int id;
-  final String title;
-  final String content;
-  final int time;
+  final int noticeId;
+  final String noticeTitle;
+  final String noticeContent;
+  final String createTime;
 
   MessageEntity({
-    required this.id,
-    required this.title,
-    required this.content,
-    required this.time,
+    required this.noticeId,
+    required this.noticeTitle,
+    required this.noticeContent,
+    required this.createTime,
   });
 
   factory MessageEntity.init() => MessageEntity(
-        id: 0,
-        title: '文章标题',
-        content: '文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内',
-        time: DateTime.now().millisecondsSinceEpoch,
+        noticeId: 0,
+        noticeTitle: '文章标题',
+        noticeContent: '文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内容文章内',
+        createTime: '2025-04-15 17:22:56',
       );
 
   factory MessageEntity.fromJson(Map<String, dynamic> json) {
     return MessageEntity(
-      id: json['id'] ?? 0,
-      title: json['title'] ?? '',
-      content: json['content'] ?? '',
-      time: json['time'] ?? 0,
+      noticeId: json['noticeId'] ?? 0,
+      noticeTitle: json['noticeTitle'] ?? '',
+      noticeContent: json['noticeContent'] ?? '',
+      createTime: json['createTime'] ?? '',
     );
   }
 
+  String get normalContent {
+    Document document = parse(noticeContent);
+    return document.body?.text ?? '';
+  }
+
   String get formatMessageTime {
-    DateTime timestamp = DateTime.fromMillisecondsSinceEpoch(time);
+    DateTime timestamp = DateTime.parse(createTime);
     final now = DateTime.now();
     final todayStart = DateTime(now.year, now.month, now.day);
     final yesterdayStart = DateTime(now.year, now.month, now.day - 1);

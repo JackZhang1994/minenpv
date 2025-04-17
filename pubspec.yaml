@@ -66,6 +66,7 @@ dependencies:
   image_gallery_saver_plus: ^4.0.1
   image_picker: ^1.1.2
   intercom_flutter: 9.2.9
+  html: ^0.15.5+1
 
 dev_dependencies:
   flutter_test:

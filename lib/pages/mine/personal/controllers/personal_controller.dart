@@ -12,6 +12,8 @@ class PersonalController extends AppGetxController {
 
   var pwdVisible = false.obs;
 
+  var deviceList = [].obs;
+
   void changePwdVisibility() {
     pwdVisible.value = !pwdVisible.value;
   }
@@ -34,6 +36,9 @@ class PersonalController extends AppGetxController {
       errorJson: () => DeviceListModel.init(),
     );
     if (result.code == 200) {
+      deviceList.clear();
+      deviceList.addAll(result.rows.where((item) => item.delFlag == '0').toList());
+      deviceList.refresh();
       switchLoadStatus(LoadStatus.success);
     } else {
       switchLoadStatus(LoadStatus.error);
@@ -41,7 +46,7 @@ class PersonalController extends AppGetxController {
     }
   }
 
-  void removeDevice(String id) async {
+  void removeDevice(int id) async {
     EasyLoading.show(status: '请稍后', dismissOnTap: true);
 
     String url = '/api/device/remove/$id';
@@ -52,7 +57,9 @@ class PersonalController extends AppGetxController {
       errorJson: () => MessageModel.init(),
     );
     if (result.code == 200) {
-      // TODO 执行List的remove操作
+      deviceList.removeWhere((item) => item.id == id);
+      deviceList.refresh();
+      RcToast('移除成功');
     } else {
       RcToast(result.msg);
     }
