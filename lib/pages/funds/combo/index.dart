@@ -9,6 +9,7 @@ import 'package:flutter_adaptive_ui/flutter_adaptive_ui.dart';
 import 'package:get/get.dart';
 import 'package:rc_widget/rc_widget.dart';
 import 'package:yunyou_desktop/themes/index.dart';
+import 'package:yunyou_desktop/utils/intercom_utils.dart';
 
 import '/widgets/public/app_scaffold.dart';
 import '/widgets/public/app_top_bar.dart';
@@ -37,7 +38,6 @@ class ComboPage extends StatelessWidget {
               isMobile: true,
               // actions: RcInkWell(
               //   onTap: () {
-              //     // TODO 恢复购买
               //     RcToast('恢复购买');
               //   },
               //   child: Text(
@@ -93,24 +93,28 @@ class ComboPage extends StatelessWidget {
                     () => Visibility(
                       visible: s.combo1.isNotEmpty || s.combo2.isNotEmpty,
                       child: Padding(
-                        padding: EdgeInsets.only(top: 90.h, bottom: 12.h + ScreenUtil().bottomBarHeight),
+                        padding: EdgeInsets.only(top: 78.h),
                         child: GestureDetector(
+                          behavior: HitTestBehavior.translucent,
                           onTap: () {
-                            RcToast('在线客服');
+                            IntercomUtils.displayMessenger();
                           },
-                          child: RichText(
-                            text: TextSpan(
-                              children: [
-                                TextSpan(
-                                  text: '有任何问题请直接联系',
-                                  style: AppThemes.of().semibold12text1,
-                                ),
-                                WidgetSpan(child: AppGaps.w6),
-                                TextSpan(
-                                  text: '在线客服',
-                                  style: AppThemes.of().semibold12primary,
-                                ),
-                              ],
+                          child: Padding(
+                            padding: EdgeInsets.only(top: 12.h, bottom: 12.h + ScreenUtil().bottomBarHeight),
+                            child: RichText(
+                              text: TextSpan(
+                                children: [
+                                  TextSpan(
+                                    text: '有任何问题请直接联系',
+                                    style: AppThemes.of().semibold12text1,
+                                  ),
+                                  WidgetSpan(child: AppGaps.w6),
+                                  TextSpan(
+                                    text: '在线客服',
+                                    style: AppThemes.of().semibold12primary,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),

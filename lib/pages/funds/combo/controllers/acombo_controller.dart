@@ -8,15 +8,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:rc_widget/rc_widget.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:yunyou_desktop/utils/app_utils.dart';
+import 'package:yunyou_desktop/widgets/public/app_dialog.dart';
 
 import '/controllers/base/app_getx_controller.dart';
 import '/controllers/public/app_user_controller.dart';
 import '/models/message_model.dart';
 import '/pages/funds/pay_code/models/pay_model.dart';
 import '../models/combo_model.dart';
+import '../models/create_order_model.dart';
 import '../widgets/pc/pay_view.dart';
 
-class ComboController extends AppGetxController {
+class ComboController extends AppSuperGetxController {
   static ComboController get to => Get.find<ComboController>();
 
   final RxInt tabIndex = 0.obs;
@@ -39,6 +43,8 @@ class ComboController extends AppGetxController {
     365: '12个月',
   };
 
+  bool _launchPayUrl = false;
+
   @override
   void onInit() {
     super.onInit();
@@ -46,6 +52,24 @@ class ComboController extends AppGetxController {
     getCombo();
     // 更新余额
     AppUserController.to.getUser();
+  }
+
+  @override
+  void onResumed() {
+    super.onResumed();
+    if (_launchPayUrl && AppUtils.isMobile()) {
+      Get.dialog(
+        AppDialog(
+          title: '已完成支付？',
+          negativeBtnText: '放弃支付',
+          positiveBtnText: '确定',
+          onPositiveTap: () {
+            AppUserController.to.getUser();
+          },
+        ),
+      );
+      _launchPayUrl = false;
+    }
   }
 
   void onTabChange(int index) {
@@ -123,7 +147,11 @@ class ComboController extends AppGetxController {
     final balance = double.parse(AppUserController.to.balance);
 
     if (balance < price) {
-      await openPopup(value);
+      if (AppUtils.isMobile()) {
+        mobilePay(value);
+      } else {
+        await openPopup(value);
+      }
     } else {
       await balancePurchase(value);
     }
@@ -150,6 +178,38 @@ class ComboController extends AppGetxController {
     RcToast(result.msg);
     if (result.code == 200) {
       AppUserController.to.getUser();
+    }
+
+    EasyLoading.dismiss(animation: false);
+  }
+
+  Future<void> mobilePay(Shop shop) async {
+    EasyLoading.show(status: '创建订单中', dismissOnTap: true);
+
+    const String url = '/api/order/create';
+
+    Map<String, dynamic> data = {
+      'channelId': 3,
+      'vipId': shop.id ?? 0,
+    };
+
+    final result = await RcHttp.post<CreateOrderModel>(
+      url,
+      data: data,
+      cancelToken: cancelToken,
+      errorJson: () => CreateOrderModel.init(),
+      fromJson: (json) => CreateOrderModel.fromJson(json),
+    );
+
+    if (result.code == 200) {
+      final String url = Uri.decodeFull(result.data.payUrl);
+      final uri = Uri.parse(url);
+      if (await canLaunchUrl(uri)) {
+        await launchUrl(uri);
+        _launchPayUrl = true;
+      }
+    } else {
+      RcToast('创建订单失败');
     }
 
     EasyLoading.dismiss(animation: false);
