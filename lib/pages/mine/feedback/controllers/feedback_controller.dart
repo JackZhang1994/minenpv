@@ -108,7 +108,6 @@ class FeedbackController extends AppGetxController {
   }
 
   void addFeedback() async {
-    // TODO 接口字段需要调整
     const String url = '/api/feedback/add';
     final Map<String, dynamic> data = {
       'type': curFeedbackIndex.value,
@@ -125,6 +124,9 @@ class FeedbackController extends AppGetxController {
     );
     if (result.code == 200) {
       RcToast('提交反馈成功');
+      Future.delayed(Duration(milliseconds: 150), () {
+        Get.back();
+      });
     } else {
       RcToast(result.msg);
     }
