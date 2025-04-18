@@ -16,6 +16,16 @@ public final class GeneratedPluginRegistrant {
   private static final String TAG = "GeneratedPluginRegistrant";
   public static void registerWith(@NonNull FlutterEngine flutterEngine) {
     try {
+      flutterEngine.getPlugins().add(new com.github.blueboytm.flutter_v2ray.FlutterV2rayPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin flutter_v2ray, com.github.blueboytm.flutter_v2ray.FlutterV2rayPlugin", e);
+    }
+    try {
+      flutterEngine.getPlugins().add(new com.example.flutter_v2ray_desktop.FlutterV2rayDesktopPlugin());
+    } catch (Exception e) {
+      Log.e(TAG, "Error registering plugin flutter_v2ray_desktop, com.example.flutter_v2ray_desktop.FlutterV2rayDesktopPlugin", e);
+    }
+    try {
       flutterEngine.getPlugins().add(new dev.flutter.plugins.integration_test.IntegrationTestPlugin());
     } catch (Exception e) {
       Log.e(TAG, "Error registering plugin integration_test, dev.flutter.plugins.integration_test.IntegrationTestPlugin", e);

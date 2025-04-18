@@ -215,6 +215,7 @@ class AppNodeController extends AppGetxController {
       RcToast('节点信息获取失败1');
       return;
     }
+    outbound.toString();
 
     if (isProxyOnly.value) {
       json.route['rules'].add(
@@ -234,6 +235,7 @@ class AppNodeController extends AppGetxController {
     await flutterV2ray.startV2Ray(
       config: json.json(),
       configMap: configMap,
+      androidConfig: getSSUrl,
       connectionType: ConnectionType.systemProxy,
     );
 

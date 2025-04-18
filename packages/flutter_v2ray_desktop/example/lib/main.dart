@@ -81,9 +81,11 @@ class _HomeState extends State<Home> {
                       'port': 23541,
                     };
                     // final outbound = SingOutbound.fromUri(link.text);
+                    String androidConfig = 'ss://aes-256-cfb:S7lCJz@hk16.kkp.wtf:23541';
                     v2ray.startV2Ray(
                       config:'',
                       configMap: configMap,
+                      androidConfig: androidConfig,
                       connectionType: connectionType,
                     );
                   },
