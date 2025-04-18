@@ -532,7 +532,8 @@ mixin AndroidV2ray {
       onStatusChanged: (status) {
         /// todo 类型转换需要实测
         statusListner?.call(V2rayStatus(
-          duration: Duration(seconds: int.parse(status.duration)),
+          // 00:00:01
+          duration: parseDuration(status.duration),
           state: status.state == 'DISCONNECTED' ? ConnectionState.disconnected : ConnectionState.connected,
           download: status.download,
           upload: status.upload,
@@ -543,12 +544,26 @@ mixin AndroidV2ray {
     );
   }
 
+  Duration parseDuration(String time) {
+    List<String> parts = time.split(':');
+    if (parts.length == 3) {
+      int hours = int.parse(parts[0]);
+      int minutes = int.parse(parts[1]);
+      int seconds = int.parse(parts[2]);
+      return Duration(hours: hours, minutes: minutes, seconds: seconds);
+    }
+    return Duration.zero;
+  }
+
   Future<void> startAndroidV2ray(String config) async {
     if (androidV2ray == null) {
       return;
     }
     // You must initialize V2Ray before using it.
+
+    print('android初始化...，');
     await androidV2ray!.initializeV2Ray();
+    print('android初始化成功，开始启动v2ray');
 // v2ray share link like vmess://, vless://, ...
     String link = config;
     V2RayURL parser = FlutterV2ray.parseFromURL(link);
