@@ -56,3 +56,8 @@ post_install do |installer|
     end
   end
 end
+
+target 'tunnel' do
+  use_frameworks!
+  pod 'NEKit', '0.0.4'
+end
