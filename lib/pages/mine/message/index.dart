@@ -33,19 +33,28 @@ class MessagePage extends GetView<MessageController> {
               () => Visibility(
                 visible: controller.data.isNotEmpty,
                 replacement: AppEmptyView(),
-                child: EasyRefresh(
-                  controller: controller.refreshController,
-                  onRefresh: controller.onRefresh,
-                  onLoad: controller.onLoadMore,
-                  child: ListView.separated(
-                    padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-                    itemBuilder: (context, index) {
-                      return AppMessageCard(entity: controller.data[index]);
+                child: SizedBox.expand(
+                  child: EasyRefresh(
+                    controller: controller.refreshController,
+                    onRefresh: () async {
+                      await controller.onRefresh();
                     },
-                    separatorBuilder: (BuildContext context, int index) {
-                      return AppGaps.h24;
+                    onLoad: () async {
+                      if (controller.data.length == controller.total) {
+                        return IndicatorResult.noMore;
+                      }
+                      await controller.onLoadMore();
                     },
-                    itemCount: controller.data.length,
+                    child: ListView.separated(
+                      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+                      itemBuilder: (context, index) {
+                        return AppMessageCard(entity: controller.data[index]);
+                      },
+                      separatorBuilder: (BuildContext context, int index) {
+                        return AppGaps.h24;
+                      },
+                      itemCount: controller.data.length,
+                    ),
                   ),
                 ),
               ),

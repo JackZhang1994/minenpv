@@ -18,6 +18,8 @@ class MessageController extends AppGetxController {
 
   int page = 1;
 
+  int total = 0;
+
   @override
   void onInit() {
     super.onInit();
@@ -31,21 +33,23 @@ class MessageController extends AppGetxController {
     super.onClose();
   }
 
-  void onRefresh() {
+  Future<void> onRefresh() async {
     page = 1;
-    onRequestData(isRefresh: true);
+    await onRequestData(isRefresh: true);
   }
 
-  void onLoadMore() {
-    onRequestData();
+  Future<void> onLoadMore() async {
+    await onRequestData();
   }
 
-  void onRequestData({bool isRefresh = false}) async {
+  Future<void> onRequestData({bool isRefresh = false}) async {
     const String url = '/api/notice/list';
     final Map<String, dynamic> params = {
       'pageSize': pageSize,
       'pageNum': page,
       'status': 0,
+      'orderByColumn': 'createTime',
+      'isAsc': 'desc',
     };
 
     final result = await RcHttp.get<MessageModel>(
@@ -57,6 +61,7 @@ class MessageController extends AppGetxController {
     );
 
     if (result.code == 200) {
+      total = result.total;
       if (isRefresh) {
         data.clear();
       }
